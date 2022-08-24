@@ -7,17 +7,25 @@
 // +----------------------------------------------------------------------
 // | 作用：axios 网络请求封装
 // +----------------------------------------------------------------------
+
 import qs from 'qs'
 import axios from 'axios'
-import {inisHelper} from "@/utils/helper";
+import { inisHelper } from '@/utils/helper/index.js'
+window.INIS = {
+    api: 'http://106.13.205.87:2333/api',
+    token: '47f8e3974a88cc31db69aec7904c262e',
+    route_hash: false,
+    version: '1.0.1'
+}
 // 创建 axios 对象
 const instance = axios.create({
-    baseURL: inisHelper.customProcessApi('http://106.13.205.87:2333/api'),
+    baseURL: inisHelper.customProcessApi(INIS.api),
     timeout: 60 * 1000,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
     }
 })
+
 // 请求拦截
 //   所有的网络请求都会先走这个方法
 instance.interceptors.request.use(
@@ -45,7 +53,7 @@ export function GET(url, config = {}){
     return instance.get(url, config);
 }
 
-// DELETE请求
+// DELECT请求
 export function DEL(url, config = {}){
     return instance.delete(url, config);
 }

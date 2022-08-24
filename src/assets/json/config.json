@@ -1,11 +1,11 @@
 {
   "basic": {
     "site": {
-      "title"       :  "夏至",
+      "title"       :  "Cocos",
       "favicon"     :  "./favicon.ico",
       "nickname"    :  "",
       "description" :  "",
-      "head_img"    :  "https://q.qlogo.cn/g?b=qq&nk=97783391&s=640",
+      "head_img"    :  "https://q.qlogo.cn/g?b=qq&nk=2669016063&s=640",
       "present"     :  "",
       "copy"		  :	 {
         "code":"备案码",
@@ -28,7 +28,7 @@
       "cross_bg"   : "//test.inis.cn/api/file/random",
       "logo": {
         "day": {
-          "big":"assets/images/logo.png",
+          "big":"",
           "small":"assets/images/logo_sm.png"
         },
         "night":{

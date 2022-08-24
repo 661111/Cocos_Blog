@@ -13,5 +13,14 @@ export default defineConfig({
   },
   css:[
 
-  ]
+  ],
+  // proxy: {
+  //   blogconfig: {
+  //     // 请填写你的后台接口地址
+  //     api: "http://106.13.205.87:2333/api",
+  //     pathRewrite: {
+  //       "^/api/": "",
+  //     },
+  //   },
+  // }
 })

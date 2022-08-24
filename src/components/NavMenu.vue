@@ -6,13 +6,13 @@
           <div class="logo">
             <img
                 width="50"
-                src='https://vkceyugu.cdn.bspapp.com/VKCEYUGU-90b49633-e3ed-4910-b066-7bcc14cbf4b0/031ac7ad-c779-40a8-9b14-d6e963fcbf85.svg'
+                :src="cocos_config.other.images.logo.day.big || 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-90b49633-e3ed-4910-b066-7bcc14cbf4b0/031ac7ad-c779-40a8-9b14-d6e963fcbf85.svg'"
                 alt
                 srcset
             />
-            <!--                :src="cocos_config.other.images.logo.day.big || 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-90b49633-e3ed-4910-b066-7bcc14cbf4b0/031ac7ad-c779-40a8-9b14-d6e963fcbf85.svg'"-->
+<!--                            :src="cocos_config.other.images.logo.day.big || 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-90b49633-e3ed-4910-b066-7bcc14cbf4b0/031ac7ad-c779-40a8-9b14-d6e963fcbf85.svg'"-->
 
-            <div class="title">夏夜星空</div>
+            <div class="title">{{ cocos_config.basic.site.title}}</div>
 <!--            {{ geek_config.site_config.title }}-->
           </div>
         </router-link>
@@ -54,75 +54,94 @@
         <div class="right-links">
 <!--          导航开始-->
           <div  class="child">
-            <router-link to="/index">主页</router-link>
+            <router-link to="/photos"><div>相册</div></router-link>
           </div>
 <!--          导航结束-->
 <!--          登陆按钮-->
-            <lew-button  @click="modalVisible1 = true">登录</lew-button>
+
+<div>
+          <div class="child" v-if="!is_login && login_show" @click="showLogin">
+            <a-avatar src="https://joeschmoe.io/api/v1/random" :size="32">
+
+            </a-avatar>
+
+          </div>
+  <div v-else-if="is_login" >
+    <a-dropdown placement="bottom"  :trigger="['click']">
+      <a class="ant-dropdown-link" @click.prevent>
+        <a-avatar :src="cocos_config.basic.site.head_img" :size="32">
+
+        </a-avatar>
+      </a>
+      <template #overlay>
+        <a-menu>
+          <a-menu-item key="0">
+            <a href="#">个人信息</a>
+          </a-menu-item>
+          <a-menu-item key="1">
+            <a href="#">系统配置</a>
+          </a-menu-item>
+          <a-menu-divider />
+          <a-menu-item v-on:click="methods.loginOut()" key="3">退出登陆</a-menu-item>
+        </a-menu>
+      </template>
+    </a-dropdown>
+  </div>
+        </div>
 <!--          登陆按钮-->
-          <lew-flex v-if="!is_login && login_show" gap="30px" x="start">
-<!--            <lew-dropdown :options="options"-->
-<!--                          placement="bottom-start"-->
-<!--                          @change="change">-->
-              <lew-avatar  round src="https://q1.qlogo.cn/g?b=qq&s=100&nk=2669016063"
-              >hover</lew-avatar
-              >
-<!--            </lew-dropdown>-->
-          </lew-flex>
+<!--模态框-->
+          <a-modal id="login-modal" v-model:visible="visible" title="登录你的账户" centered width="360px" @ok="handleOk">
+              <a-input
+                  v-model="account"
+                  name="username"
+                  type="text"
+                  style="width: 280px"
+                  placeholder="账号"
+              />
+            <br/><br/>
+              <a-input-password
+                  v-model="password"
+                  name="password"
+                  v-on:keyup.enter="methods.login()"
+                  type="password"
+                  style="width: 280px"
+                  placeholder="密码"
+              />
+            <template #footer>
+              <a-button key="back" @click="handleOk">取消</a-button>
+              <a-button key="submit" type="primary"  v-on:click="methods.login()">登陆</a-button>
+            </template>
+          </a-modal>
+<!--模态框-->
+<!--          用户头像-->
 
-<!--          登陆模态框-->
-          <lew-modal
-              id="login-modal"
-              :visible="modalVisible1"
-              width="350px"
-              @mask-click="modalVisible1 = false"
-          >
-            <div class="modal-body">
-              <lew-title :bold="700" style="margin-bottom: 20px"
-              >登录你的账户
-              </lew-title>
-              <lew-form-item direction="y" title="账号">
-                <lew-input v-model="account" name="username" type="text" placeholder="帐号 | 邮箱" />
-              </lew-form-item>
-              <lew-form-item
-                  style="margin-bottom: 30px"
-                  direction="y"
-                  title="密码"
-              >
-                <lew-input v-model="password" name="password" v-on:keyup.enter="methods.login()" type="password" placeholder="密码"/>
-              </lew-form-item>
 
-              <lew-flex x="end">
-                <lew-button type="normal" @click="modalVisible1 = false"
-                >关闭
-                </lew-button>
-                <lew-button v-on:click="methods.login()" >立即登录</lew-button>
-              </lew-flex>
-            </div>
-          </lew-modal>
+<!--          <template>-->
+<!--            <a-dropdown :trigger="['click']">-->
+<!--              <a class="ant-dropdown-link" @click.prevent>-->
+<!--                Click me-->
+<!--                <DownOutlined />-->
+<!--              </a>-->
+<!--              <template #overlay>-->
+<!--                <a-menu>-->
+<!--                  <a-menu-item key="0">-->
+<!--                    <a href="http://www.alipay.com/">1st menu item</a>-->
+<!--                  </a-menu-item>-->
+<!--                  <a-menu-item key="1">-->
+<!--                    <a href="http://www.taobao.com/">2nd menu item</a>-->
+<!--                  </a-menu-item>-->
+<!--                  <a-menu-divider />-->
+<!--                  <a-menu-item key="3">3rd menu item</a-menu-item>-->
+<!--                </a-menu>-->
+<!--              </template>-->
+<!--            </a-dropdown>-->
+<!--          </template>-->
 
-<!--          <div-->
-<!--              @click="toLink({ isLogin: false, path: '/Timeline' })"-->
-<!--              class="child"-->
-<!--          >-->
-<!--            <i class="hashtag icon"></i>-->
-<!--          </div>-->
-<!--          <div-->
-<!--              @click="toLink({ isLogin: false, path: '/MsgWall' })"-->
-<!--              class="child"-->
-<!--          >-->
-<!--            <i class="clipboard outline icon"></i>-->
-<!--          </div>-->
 
-<!--          <div-->
-<!--              @click="toLink({ isLogin: true, path: '/AddArticle' })"-->
-<!--              class="child"-->
-<!--          >-->
-<!--            <i class="pencil alternate icon"></i>-->
-<!--          </div>-->
-<!--          <div @click="toLink({ isLogin: true, path: '/About' })" class="child">-->
-<!--            <i class="user outline icon"></i>-->
-<!--          </div>-->
+
+<!--          用户头像-->
+
+
 
         </div>
       </div>
@@ -131,87 +150,96 @@
 </template>
 
 <script>
-import {GET} from "@/utils/http/request";
-import { ref, onMounted, reactive } from "vue";
+import {POST} from "@/utils/http/request";
+import { ref, toRefs, reactive,defineComponent } from "vue";
 import {mapState, useStore} from 'vuex'
-import axios from "axios";
-import {inisHelper} from "@/utils/helper";
-import {LewFlex,LewButton,LewModal,LewTitle,LewFormItem,LewInput,LewDropdown,LewAvatar,LewPopover,LewMessage,LewNotification} from 'lew-ui'
+import {inisHelper} from "@/utils/helper/index.js";
+import {Dropdown,Button,notification,Modal,Input,Avatar,Menu} from "ant-design-vue";
 
+const InputPassword = Input.Password
+const MenuItem = Menu.Item
+const MenuDivider = Menu.Divider
 
-
-
-
-export default {
+export default defineComponent( {
   name: "NavMenu",
 components:{
-    LewFlex,
-  LewButton,
-  LewModal,
-  LewTitle,
-  LewFormItem,
-  LewInput,
-  LewDropdown,
-  LewAvatar,
-  LewMessage,
-  LewPopover,
-  LewNotification
+  AButton: Button,
+    ADropdown: Dropdown,
+    Button,
+  AModal: Modal,
+  AInput: Input,
+  AInputPassword: InputPassword,
+  AAvatar: Avatar,
+  AMenu: Menu,
+  AMenuItem: MenuItem,
+  AMenuDivider: MenuDivider
 
 },
 
   setup () {
-    // const store = useStore()
+    const store = useStore()
+    const visible = ref(false)
+    const showLogin = () => {
+      visible.value = true
+    }
+    const handleOk = e => {
+      console.log(e);
+      visible.value = false
+    }
     const state = reactive({
       account: null, // 帐号
       password: null, // 密码
       user: [], // 用户数据
+      is_login: false, // 是否登录
+      login_show: true,
     })
         // 获取缓存中的登录信息
     const login_storage = inisHelper.get.storage('login')
     // 判断缓存是否存在且未过期
     if (login_storage != 'expire' && login_storage != false) {
       state.user = login_storage.user
-      state.is_login = true
+      state.is_login = true;
+      store.dispatch("commitLogin");
+    } else {
+      inisHelper.clear.storage("login")
     }
 
     const methods = {
-      // inisData () {
-      //   methods.moving()
-      // },
+
       // 登录
       login () {
-        // if (inisHelper.is.empty(state.account)) $.LewMessage.send('提示！', '帐号不得为空！', 'top-right', 'rgba(0,0,0,0.2)', 'warning')
-        // else if (inisHelper.is.empty(state.password)) $.LewMessage.send('提示！', '帐号不得为空！', 'top-right', 'rgba(0,0,0,0.2)', 'warning')
-        if (inisHelper.is.empty(state.account))LewNotification.warning('error','username or password error!',5)
-            else if (inisHelper.is.empty(state.password))LewNotification.warning('登陆失败!','账号或密码有误!',5)
+        console.log(state.account)
+        if (inisHelper.is.empty(state.account))notification.warning({message:'登陆有误！',description:'账号不能为空！'})
+        else if (inisHelper.is.empty(state.password))notification.warning({message:'登陆有误！',description:'密码不能为空！'})
         else {
-          const params = {
+          let params = {
             mode: 'login',
             account: state.account,
             password: state.password
           }
 
           // 登录动画
-          state.login_is_load = true
+          // state.login_is_load = true
 
           POST('users', params).then(res => {
-            if (res.data.code == 200) {
+            if (res.data.code === 200) {
               // 设置登录用户信息
+              notification.success({message:'登陆成功！',description:'你已经赢了！'})
               state.user = res.data.data.user
               // 有效时间
               res.data.data.time = 7200
               // 登录信息存储到缓存中
               inisHelper.set.storage('login', res.data.data)
               // 关闭登录框
-              $('#login-modal').modal('hide')
+              visible.value = false
+
               // 更新登录状态
               state.is_login = true
               // 重载页面
               location.reload()
-            } else LewNotification.success('登陆成功', '1211', 5)
+            } else  notification.error({message: '好像有点小问题',description: res.data.msg})
             // 登录动画
-            state.modalVisible1 =false
-            state.login_is_load = false
+            // state.login_is_load = false
           })
         }
       },
@@ -226,34 +254,22 @@ components:{
       },
     }
 
-
+    // onMounted(() => {
+    //   methods.initData()
+    // })
 
 return{
+  ...toRefs(state),
       methods,
-  modalVisible1: ref(false),
-  options: [
-    {
-      label: "用户资料",
-      key: "profile",
-    },
-    {
-      label: "编辑用户资料",
-      key: "editProfile",
-    },
-    {
-      label: "退出登录",
-      key: "logout",
-    }
-  ],
-  change(key) {
-    LewMessage.info(String(key));
-  }
+      visible,
+  showLogin,
+  handleOk,
     };
   },
   computed: {
     ...mapState(['cocos_config'])
   },
-}
+})
 
 </script>
 
