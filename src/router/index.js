@@ -14,15 +14,21 @@ const router = createRouter({
       component: () => import('@/views/layout/Base.vue'),
       children: [
         {
-          title:'首页',
+          title: '首页',
           name: 'index',
           path: '/',
           component: () => import('@/views/pages/Index.vue')
         },
         {
-          title:'相册',
-          name:'photos',
-          path:'/photos',
+          title: '文章详情',
+          name: 'article',
+          path: '/article/:id',
+          component: () => import('@/views/pages/Article.vue')
+        },
+        {
+          title: '相册',
+          name: 'photos',
+          path: '/photos',
           component:  ()  =>  import('@/views/pages/Photos.vue')
         }
       ],

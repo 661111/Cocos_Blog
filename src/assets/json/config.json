@@ -8,7 +8,7 @@
       "head_img"    :  "https://q.qlogo.cn/g?b=qq&nk=2669016063&s=640",
       "present"     :  "",
       "copy"		  :	 {
-        "code":"备案码",
+        "code":"琼ICP备2021000719号",
         "url" :"https://beian.miit.gov.cn"
       }
     }
@@ -55,8 +55,9 @@
       "two": "[{\"title\":\"菜单一\",\"class\":\"fas fa-tags text-danger font-12px\",\"svg\":\"\",\"child\":[{\"title\":\"萌卜兔\",\"url\":\"//racns.com\",\"target\":\"_block\"},{\"title\":\"自定义 - 后台修改\",\"url\":\"//inis.cn\",\"target\":\"_block\"}]},{\"title\":\"菜单二\",\"class\":\"fas fa-comments text-warning font-12px\",\"svg\":\"\",\"child\":[{\"title\":\"萌卜兔\",\"url\":\"//racns.com\",\"target\":\"_block\"}]}]"
     },
     "footer": {
-      "left"        :  "<span class=\"item left bg-danger ml-1\">自定义脚</span><span class=\"item right bg-success\"><a href=\"//inis.cn\" target=\"_blank\">左边</a></span>",
+      "left"        :  "<span class=\"item left bg-danger ml-1\"></span><span class=\"item right bg-success\"><a href=\"//inis.cn\" target=\"_blank\"></a></span>",
       "right"       :  "<span class=\"item left bg-info\"><a href=\"//racns.com/inis.html\" target=\"_blank\">自定义脚</a></span><span class=\"item right bg-light mr-1\"><a href=\"//inis.cc\" target=\"_blank\">右边</a></span>"
     }
   }
+
 }

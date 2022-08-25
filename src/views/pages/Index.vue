@@ -1,8 +1,10 @@
 <template>
 
-    <div class="articleBox"  v-for="data in article_data">
+    <div class="articleBox"  v-for="data in article_data" :key="data.id">
       <div class="articleTitle">
-       <h3> {{data.title}}</h3>
+        <router-link :to="{name: 'article', params: { id: data.id }}">
+       <h3><a href="#">{{data.title}}</a></h3>
+        </router-link>
       </div>
       <div class="articleTime">
         {{data.create_time}}
@@ -13,7 +15,7 @@
 <div class="articleD">
   {{data.description}}
 </div>
-      <a-divider style="height: 2px; background-color: #7cb305"/>
+      <a-divider style="height: 1px; background-color: #f759ab"/>
     </div>
 <!--  <template v-for="data in article_data" >-->
 <!--<div>-->
@@ -140,11 +142,10 @@ setup(){
 </script>
 <style  lang="scss" scoped>
 .articleBox{
-  position: relative;
   margin-bottom: 10px;
   padding: 20px 20px 0 20px;
-  width: 600px;
-  //background-color: #f2f2f2;
+  width: 650px;
+  background-color: #f2f2f2;
   border-radius: 10px;
 align-items: flex-end;
   img{

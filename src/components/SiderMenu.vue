@@ -1,5 +1,8 @@
 <template>
-<h1>SiderMenu lalalalalalla</h1>
+  <div class="siderBox">
+
+  </div>
+
 </template>
 
 <script>
@@ -8,6 +11,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.siderBox{
+  display: block;
+  box-sizing: border-box;
+}
 </style>

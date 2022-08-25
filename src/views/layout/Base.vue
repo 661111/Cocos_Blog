@@ -1,20 +1,21 @@
 <template>
   <NavMenu  class="top-nav-wrapper-master"  />
 
-  <SiderMenu/>
+  <SiderMenu class="leftRow"/>
 
 
+<div class="mainRow">
+        <router-view />
+</div>
 
-        <router-view/>
-
-
-
+<Footer />
 
 </template>
 
 <script>
 import NavMenu from '@/components/NavMenu.vue'
 import SiderMenu from "@/components/SiderMenu.vue";
+import Footer from "@/components/Footer.vue";
 import {mapState} from "vuex";
 import store from "@/store";
 import {inisHelper} from "@/utils/helper/index.js";
@@ -31,6 +32,7 @@ name:'Base',
   components:{
     NavMenu,
     SiderMenu,
+    Footer,
     Layout,
     ALayoutHeader: LayoutHeader,
     ALayoutContent: LayoutContent,
@@ -67,5 +69,24 @@ name:'Base',
   top: 0px;
   transform: translateX(-50%);
   z-index: 999;
+}
+.leftRow{
+  position: fixed;
+  width: 250px;
+  height: 80%;
+  z-index: 2;
+  scrollbar-color: transparent transparent;
+  scrollbar-track-color: transparent;
+  -ms-scrollbar-track-color: transparent;
+}
+.mainRow{
+  width: calc(100% - 32rem);
+  margin-left: 32rem;
+  margin-top: 57px;
+  padding: 10px;
+  height: auto;
+  width: 955px;
+  border-radius: 10px;
+  background-color: #999999;
 }
 </style>
