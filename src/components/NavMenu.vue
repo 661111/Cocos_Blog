@@ -3,7 +3,7 @@
     <div class="top-nav">
       <div class="left">
         <router-link class="pc-logo" to="/">
-          <div class="logo">
+          <div  class="logo">
             <img
                 width="50"
                 :src="cocos_config.other.images.logo.day.big || 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-90b49633-e3ed-4910-b066-7bcc14cbf4b0/031ac7ad-c779-40a8-9b14-d6e963fcbf85.svg'"
@@ -19,36 +19,36 @@
         <div  class="logo mobile-logo">
           <img width="35" src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-90b49633-e3ed-4910-b066-7bcc14cbf4b0/031ac7ad-c779-40a8-9b14-d6e963fcbf85.svg" alt srcset />
         </div>
-        <div class="search">
-          <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16px"
-              height="16px"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="feather feather-search"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-              placeholder="关键词"
-              type="text"
-          />
-          <div class="res-box" >
-<!--            :class="is-show-res-box"-->
-            <div class="title">
-              搜索结果推荐文章" : "暂无结果
-            </div>
-            <ul>
-              <router-link to="/"/>
-            </ul>
-          </div>
-        </div>
+<!--        <div class="search">-->
+<!--          <svg-->
+<!--              xmlns="http://www.w3.org/2000/svg"-->
+<!--              width="16px"-->
+<!--              height="16px"-->
+<!--              viewBox="0 0 24 24"-->
+<!--              fill="none"-->
+<!--              stroke="currentColor"-->
+<!--              stroke-width="2"-->
+<!--              stroke-linecap="round"-->
+<!--              stroke-linejoin="round"-->
+<!--              class="feather feather-search"-->
+<!--          >-->
+<!--            <circle cx="11" cy="11" r="8" />-->
+<!--            <line x1="21" y1="21" x2="16.65" y2="16.65" />-->
+<!--          </svg>-->
+<!--          <input-->
+<!--              placeholder="关键词"-->
+<!--              type="text"-->
+<!--          />-->
+<!--          <div class="res-box" >-->
+<!--&lt;!&ndash;            :class="is-show-res-box"&ndash;&gt;-->
+<!--            <div class="title">-->
+<!--              搜索结果推荐文章" : "暂无结果-->
+<!--            </div>-->
+<!--            <ul>-->
+<!--              <router-link to="/"/>-->
+<!--            </ul>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
       <div class="right">
         <div class="right-links">
@@ -90,12 +90,17 @@
         </div>
 <!--          登陆按钮-->
 <!--模态框-->
-          <a-modal id="login-modal" v-model:visible="visible" title="登录你的账户" centered width="360px" @ok="handleOk">
-              <a-input
+          <a-modal id="login-modal" v-model:visible="visible" title="登录你的账户" :closable="false" centered width="360px" @ok="handleOk">
+            <template #footer>
+              <a-button key="back" @click="handleOk">取消</a-button>
+              <a-button key="submit" type="primary"  v-on:click="methods.login()">登陆</a-button>
+            </template>
+            <a-input
                   v-model="account"
                   name="username"
                   type="text"
                   style="width: 280px"
+                  :allowClear="true"
                   placeholder="账号"
               />
             <br/><br/>
@@ -107,42 +112,8 @@
                   style="width: 280px"
                   placeholder="密码"
               />
-            <template #footer>
-              <a-button key="back" @click="handleOk">取消</a-button>
-              <a-button key="submit" type="primary"  v-on:click="methods.login()">登陆</a-button>
-            </template>
           </a-modal>
 <!--模态框-->
-<!--          用户头像-->
-
-
-<!--          <template>-->
-<!--            <a-dropdown :trigger="['click']">-->
-<!--              <a class="ant-dropdown-link" @click.prevent>-->
-<!--                Click me-->
-<!--                <DownOutlined />-->
-<!--              </a>-->
-<!--              <template #overlay>-->
-<!--                <a-menu>-->
-<!--                  <a-menu-item key="0">-->
-<!--                    <a href="http://www.alipay.com/">1st menu item</a>-->
-<!--                  </a-menu-item>-->
-<!--                  <a-menu-item key="1">-->
-<!--                    <a href="http://www.taobao.com/">2nd menu item</a>-->
-<!--                  </a-menu-item>-->
-<!--                  <a-menu-divider />-->
-<!--                  <a-menu-item key="3">3rd menu item</a-menu-item>-->
-<!--                </a-menu>-->
-<!--              </template>-->
-<!--            </a-dropdown>-->
-<!--          </template>-->
-
-
-
-<!--          用户头像-->
-
-
-
         </div>
       </div>
     </div>
@@ -159,7 +130,6 @@ import {Dropdown,Button,notification,Modal,Input,Avatar,Menu} from "ant-design-v
 const InputPassword = Input.Password
 const MenuItem = Menu.Item
 const MenuDivider = Menu.Divider
-
 export default defineComponent( {
   name: "NavMenu",
 components:{
@@ -199,9 +169,9 @@ components:{
     if (login_storage != 'expire' && login_storage != false) {
       state.user = login_storage.user
       state.is_login = true;
-      store.dispatch("commitLogin");
+      store.dispatch('commitLogin');
     } else {
-      inisHelper.clear.storage("login")
+      inisHelper.clear.storage('login')
     }
 
     const methods = {
@@ -209,6 +179,7 @@ components:{
       // 登录
       login () {
         console.log(state.account)
+        console.log(state.password)
         if (inisHelper.is.empty(state.account))notification.warning({message:'登陆有误！',description:'账号不能为空！'})
         else if (inisHelper.is.empty(state.password))notification.warning({message:'登陆有误！',description:'密码不能为空！'})
         else {
@@ -217,6 +188,7 @@ components:{
             account: state.account,
             password: state.password
           }
+          console.log(params)
 
           // 登录动画
           // state.login_is_load = true
@@ -266,8 +238,11 @@ return{
   handleOk,
     };
   },
+  methods:{
+
+  },
   computed: {
-    ...mapState(['cocos_config'])
+    ...mapState(['cocos_config']),
   },
 })
 

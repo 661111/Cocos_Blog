@@ -1,12 +1,14 @@
-body  {
+body {
   padding: 0 !important;
   overflow-y: scroll !important;
   overflow-x: auto !important;
-  a{
-    color: black;
-  }
+}
+body a {
+  color: black;
 }
 
 html {
   overflow: inherit;
 }
+
+/*# sourceMappingURL=main.css.map */
