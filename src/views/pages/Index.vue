@@ -1,22 +1,24 @@
 <template>
-
+  <div class="articleMain">
     <div class="articleBox"  v-for="data in article_data" :key="data.id">
       <div class="articleTitle">
         <router-link :to="{name: 'article', params: { id: data.id }}">
        <h3><a href="#">{{data.title}}</a></h3>
         </router-link>
+        <h5> 发布于: {{data.create_time}}</h5>
       </div>
-      <div class="articleTime">
-        {{data.create_time}}
-      </div>
-      <div class="articleImg">
-        <img :src="data.expand.img_src" height="100"/>
-      </div>
+
 <div class="articleD">
   {{data.description}}
+
+    <img :src="data.expand.img_src" height="100"/>
+
 </div>
       <a-divider style="height: 1px; background-color: #f759ab"/>
     </div>
+  <h3 v-show="last_page">没有更多了！</h3>
+  <a-button v-show="!last_page" v-on:click="methods.getArticle(self_page + 1)"  color="#d3adf7" >加载更多</a-button>
+  </div>
 <!--  <template v-for="data in article_data" >-->
 <!--<div>-->
 <!--    <a-list item-layout="vertical" size="large" :data-Source="article_data" v-for="data in article_data" :RowKey="article_data.id" >-->
@@ -57,8 +59,8 @@ import {GET} from "@/utils/http/request";
 import store from "@/store";
 import {mapState, useStore} from "vuex";
 import {onMounted, reactive, toRefs} from "vue";
-import {inisHelper} from "@/utils/helper";
-import {Layout,Row,Col,List,Divider} from "ant-design-vue";
+import {inisHelper} from "@/utils/helper/helper";
+import {Layout,Row,Col,List,Divider,Button} from "ant-design-vue";
 
 const LayoutContent = Layout.Content
 const ListItem  = List.Item
@@ -72,6 +74,7 @@ name:'Index',
     Col,
     AList:List,
     ADivider: Divider,
+    AButton: Button,
     AListItem: ListItem,
     AListItemMeta: ListItemMeta,
   ALayoutContent: LayoutContent
@@ -83,7 +86,8 @@ setup(){
     article: { page: 6 }, // 文章数据
     article_data: [], // 文章数据
     is_mobile: inisHelper.get.storage('inis', 'mobile'), // 是否为手机
-
+    self_page: 1, // 当前页码
+    last_page: false, // 最后一页
   })
   const methods = {
     initData(){
@@ -98,7 +102,7 @@ setup(){
         GET('article', {
           params, headers
         }).then((res) => {
-          if (res.data.code == 200) {
+          if (res.data.code === 200) {
             // 设置文章列表数据
             state.article = res.data.data
             state.article.data.forEach(item => {
@@ -141,18 +145,31 @@ setup(){
 
 </script>
 <style  lang="scss" scoped>
+.articleMain{
+  //background-color: #f8f8f8;
+  padding: 10px;
+  max-width:100%  ;
+  border-radius: 10px;
+}
 .articleBox{
   margin-bottom: 10px;
   padding: 20px 20px 0 20px;
-  width: 650px;
-  background-color: #f2f2f2;
+  max-width: 650px;
+  background-color: white;
   border-radius: 10px;
-align-items: flex-end;
-  img{
-    margin-left: 0px;
-    display: flex;
-    flex-direction: row;
 
-  }
 }
+.articleTitle{
+  display: flex;
+align-items: center;
+}
+.articleD {
+  display: flex;
+  box-sizing: content-box;
+    img{
+      margin-left: auto;
+      max-width: 150px;
+    }
+}
+
 </style>

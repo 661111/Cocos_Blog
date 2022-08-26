@@ -1,5 +1,5 @@
 import { GET } from '@/utils/http/request'
-import { inisHelper } from '@/utils/helper/index'
+import { inisHelper } from '@/utils/helper/helper'
 
 export default {
     // 设置主题配置

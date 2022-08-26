@@ -1,6 +1,6 @@
 import {createRouter, createWebHashHistory, createWebHistory} from 'vue-router'
 import store from '@/store'
-import { inisHelper } from '@/utils/helper/index'
+import { inisHelper } from '@/utils/helper/helper'
 
 
 let history   = (INIS.route_hash) ? createWebHashHistory() : createWebHistory();

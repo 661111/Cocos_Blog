@@ -18,7 +18,7 @@ import SiderMenu from "@/components/SiderMenu.vue";
 import Footer from "@/components/Footer.vue";
 import {mapState} from "vuex";
 import store from "@/store";
-import {inisHelper} from "@/utils/helper/index.js";
+import {inisHelper} from "@/utils/helper/helper.js";
 import {Layout} from "ant-design-vue";
 
 const LayoutHeader = Layout.Header
@@ -60,7 +60,7 @@ name:'Base',
   position: fixed;
   max-width: 100%;
   width: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.7);
   -webkit-backdrop-filter: saturate(200%) blur(20px);
 // box-shadow: 0px 0px 15px -5px rgb(0 0 0 / 15%);
   backdrop-filter: saturate(200%) blur(20px);
@@ -80,13 +80,12 @@ name:'Base',
   -ms-scrollbar-track-color: transparent;
 }
 .mainRow{
-  width: calc(100% - 32rem);
-  margin-left: 32rem;
+  width: calc(85% - 325px);
+  margin-left: 325px;
   margin-top: 57px;
   padding: 10px;
   height: auto;
-  width: 955px;
   border-radius: 10px;
-  background-color: #999999;
+
 }
 </style>

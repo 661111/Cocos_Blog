@@ -10,7 +10,7 @@
 
 import qs from 'qs'
 import axios from 'axios'
-import { inisHelper } from '@/utils/helper/index.js'
+import { inisHelper } from '@/utils/helper/helper.js'
 
 window.INIS = {
     api: 'https://api.inis.cn/api',

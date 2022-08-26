@@ -1,34 +1,37 @@
 <template>
-<div id="article">
+<div class="articleRow" id="article">
   <a-page-header
       :title="article.title"
       class="site-page-header"
       :sub-title="article.last_update_time"
       @back="() => null"
-      />
+      >
+
   <div class="content">
-
-    <div class="row">
-      <div class="col">
-        <div class="articleTitle">
-
-
-          <span class="font-12px">
-
-          </span>
-        </div>
-      </div>
-    </div>
+    <a-row class="contentRow">
+      <div  v-html="article.content" class="markDown"></div>
+    </a-row>
   </div>
+  </a-page-header>
 </div>
 </template>
+<!--    <div class="row">-->
+<!--      <div class="col">-->
+<!--        <div class="articleTitle">-->
 
+
+<!--          <span class="font-12px">-->
+
+<!--          </span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 <script>
 import {onMounted, reactive, toRefs} from "vue";
 import {mapState, useStore} from "vuex";
 import {onBeforeRouteUpdate, useRoute} from "vue-router";
-import {inisHelper} from "@/utils/helper";
-import {notification,PageHeader} from "ant-design-vue";
+import {inisHelper} from "@/utils/helper/helper";
+import {notification,PageHeader,Image} from "ant-design-vue";
 import {GET} from "@/utils/http/request";
 
 export default {
@@ -153,6 +156,15 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.articleRow{
+  max-width: 80%;
+  height: auto;
+}
+#article img{
+  width: 200px;
+}
+.markDown img{
+  width: 200px;
+}
 </style>

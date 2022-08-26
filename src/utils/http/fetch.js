@@ -8,7 +8,7 @@
 // | 作用：fetch 网络请求封装
 // +----------------------------------------------------------------------
 
-import { inisHelper } from '@/utils/helper/index.js'
+import { inisHelper } from '@/utils/helper/helper.js'
 
 const baseURL = inisHelper.customProcessApi(INIS.api)
 
