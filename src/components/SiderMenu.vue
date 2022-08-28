@@ -1,19 +1,35 @@
 <template>
   <div class="siderBox">
-
+    <div class="sticky-music">
+<Music/>
+    </div>
   </div>
 
 </template>
 
 <script>
+import Music from "@/components/music/Music.vue";
 export default {
-  name: "SiderMenu"
+  name: "SiderMenu",
+  components: {
+    Music
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 .siderBox{
-  display: block;
+  margin-left: 60px;
+  margin-top: 10px;
+  padding: 0;
+  display: flex;
   box-sizing: border-box;
+  .sticky-music{
+    background-color: #f8f8f8;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+  }
 }
+
 </style>

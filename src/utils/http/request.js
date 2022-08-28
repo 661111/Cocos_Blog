@@ -13,8 +13,8 @@ import axios from 'axios'
 import { inisHelper } from '@/utils/helper/helper.js'
 
 window.INIS = {
-    api: 'https://api.inis.cn/api',
-    token: '47f8e3974a88cc31db69aec7904c262e',
+    api: 'http://106.13.205.87:2333/api',
+    token: '621f525a3b76f3a5a25e4e765ace5c41',
     route_hash: false,
     version: '1.0.1'
 }

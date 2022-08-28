@@ -26,6 +26,18 @@ export default {
             update_time: ''
         }
     },
+    music: {
+        is_play: false,
+        music_info: {},
+        volume: 0.7,
+    },
+    music_control: {
+        duration: 0.00,
+        currentTime: 0.00,
+    },
+    music_progress: {
+        ended: false,
+    },
     cocos_config: config,
     article: {
         is_comments: false // 是否触发评论

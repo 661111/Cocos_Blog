@@ -7,7 +7,7 @@
 <div class="mainRow">
         <router-view />
 </div>
-
+  <a-back-top />
 <Footer />
 
 </template>
@@ -19,21 +19,22 @@ import Footer from "@/components/Footer.vue";
 import {mapState} from "vuex";
 import store from "@/store";
 import {inisHelper} from "@/utils/helper/helper.js";
-import {Layout} from "ant-design-vue";
+import {Layout,BackTop} from "ant-design-vue";
 
 const LayoutHeader = Layout.Header
 const LayoutContent = Layout.Content
 const LayoutSider = Layout.Sider
 const LayoutFooter = Layout.Footer
 
-
 export default {
 name:'Base',
   components:{
     NavMenu,
     SiderMenu,
+    Audio,
     Footer,
     Layout,
+    ABackTop: BackTop,
     ALayoutHeader: LayoutHeader,
     ALayoutContent: LayoutContent,
     ALayoutSider: LayoutSider,
@@ -82,7 +83,7 @@ name:'Base',
 .mainRow{
   width: calc(85% - 325px);
   margin-left: 325px;
-  margin-top: 57px;
+  margin-top: 50px;
   padding: 10px;
   height: auto;
   border-radius: 10px;

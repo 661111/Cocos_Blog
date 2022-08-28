@@ -1,6 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router';
-
+import Audio from "@/components/tool/Audio.vue";
 
 
 
@@ -13,7 +13,7 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-
+<Audio/>
   <RouterView/>
 </template>
 

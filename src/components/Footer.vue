@@ -4,16 +4,16 @@
     <div  v-html="cocos_config.developer.footer.left"></div>
     <div>
       <a-tag color="blue">Cocos © 2022</a-tag>
-      <a-tag color="#d3adf7">
-        <template #icon>
-          <smile-outlined />
-        </template>
-        {{ cocos_config.basic.site.copy.code }}
-      </a-tag>
     </div>
   </div>
   <div class="rightRow">
     <div  v-html="cocos_config.developer.footer.right"></div>
+    <a-tag color="#d3adf7">
+      <template #icon>
+        <smile-outlined />
+      </template>
+      {{ cocos_config.basic.site.copy.code }}
+    </a-tag>
 
   </div>
 

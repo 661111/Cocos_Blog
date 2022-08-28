@@ -9,7 +9,7 @@
 
   <div class="content">
     <a-row class="contentRow">
-      <div  v-html="article.content" class="markDown"></div>
+      <div v-code-highlight v-html="article.content" class="mackdown"></div>
     </a-row>
   </div>
   </a-page-header>
@@ -33,6 +33,7 @@ import {onBeforeRouteUpdate, useRoute} from "vue-router";
 import {inisHelper} from "@/utils/helper/helper";
 import {notification,PageHeader,Image} from "ant-design-vue";
 import {GET} from "@/utils/http/request";
+
 
 export default {
   name: "Article",

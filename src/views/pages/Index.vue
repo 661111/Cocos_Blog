@@ -14,10 +14,10 @@
     <img :src="data.expand.img_src" height="100"/>
 
 </div>
-      <a-divider style="height: 1px; background-color: #f759ab"/>
+      <a-divider style="height: 1px; background-color: #efdbff"/>
     </div>
   <h3 v-show="last_page">没有更多了！</h3>
-  <a-button v-show="!last_page" v-on:click="methods.getArticle(self_page + 1)"  color="#d3adf7" >加载更多</a-button>
+  <a-button v-show="!last_page" v-on:click="methods.getArticle(self_page + 1)" danger shape="round" >加载更多</a-button>
   </div>
 <!--  <template v-for="data in article_data" >-->
 <!--<div>-->
@@ -146,7 +146,7 @@ setup(){
 </script>
 <style  lang="scss" scoped>
 .articleMain{
-  //background-color: #f8f8f8;
+  background-color: #f8f8f8;
   padding: 10px;
   max-width:100%  ;
   border-radius: 10px;

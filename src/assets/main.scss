@@ -4,6 +4,9 @@ body  {
   overflow-y: scroll !important;
   overflow-x: auto !important;
   background-color: #f8f8f8;
+  a{
+    color: #b37feb;
+  }
 }
 
 html {
@@ -13,4 +16,7 @@ html {
 #article img{
   max-width: 100%;
 }
+
+.mackdown pre{position:relative;border-radius:4px;background:rgba(33,37,42,var(--inis-opacity))}
+.mackdown pre .repair{position:absolute;width:6px;height:6px;background:	rgba(33,37,42,var(--inis-opacity));right:0;bottom:0}
 
