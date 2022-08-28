@@ -28,14 +28,34 @@
     <span v-show="!play" @click="methods.handlePauseOrPlay()" class="mr-2" data-stopPropagation="true"><MusicPlay/></span>
     <span v-show="play"  @click="methods.handlePauseOrPlay()" class="mr-2" data-stopPropagation="true"><MusicPause/></span>
     <span @click="methods.nextMusic()" class="mr-1" data-stopPropagation="true"><MusicNext/></span>
-    <MusicList @click="methods.Collapse"/>
-    <span v-show="mode == 0" @click="methods.swMode" class="mr-1" ></span>
+    <MusicList @click="methods.Collapse" :class="showSheet ? 'musicListIcon': ''"/>
+    <span v-show="mode == 0" @click="methods.swMode" class="mr-1" ><RepeatPlay/></span>
     <span v-show="mode == 1" @click="methods.swMode" class="mr-1" ></span>
     <span v-show="mode == 2" @click="methods.swMode" class="mr-1" ></span>
 
   </p>
 
+<!--显示歌曲列表-->
+  <div class="musicList" :class="!showSheet ? 'hide-music-list': ''">
+    <div class="musicinfo">
+      <a-list size="small" :data-source="musicList.songs">
+        <template #renderItem="{ item }">
+        <a-list-item style="padding: 0">
+          <a-list-item-meta :description="item.author" >
+            <template #title>
+              <a @click="methods.swMusic(item.song_id)">{{ item.name }}</a>
+            </template>
+<!--            <template #avatar>-->
+<!--              <a-avatar :src="item.cover" />-->
+<!--            </template>-->
+          </a-list-item-meta>
+        </a-list-item>
+        </template>
+      </a-list>
 
+    </div>
+  </div>
+<!--  显示歌曲列表结束-->
 <!--        显示歌曲列表-->
 <!--  <div class="musicList music-playlist" style="max-height: 0;height: unset">-->
 <!--    <a v-for="(data, index) in music.songs" :key="index" v-on:click.stop="methods.musicInfo(index,data.song_id)" data-stopPropagation="true">-->
@@ -56,26 +76,30 @@ import { GET } from '@/utils/http/request'
 import {reactive, toRefs, watch, onBeforeUnmount} from 'vue'
 import { onMounted } from "@vue/runtime-core";
 import {mapGetters, useStore} from 'vuex'
-
-
+import {List} from "ant-design-vue";
 import MusicPrevious from '@/components/icons/MusicPrevious.vue'
 import MusicPlay  from '@/components/icons/MusicPlay.vue'
 import MusicPause from '@/components/icons/MusicPause.vue'
 import MusicNext  from '@/components/icons/MusicNext.vue'
 import PlayList   from '@/components/icons/PlayList.vue'
 import MusicList  from '@/components/icons/MusicList.vue'
-import Audio from "@/components/tool/Audio.vue";
+import RepeatPlay from "@/components/icons/RepeatPlay.vue";
+const ListItem = List.Item;
+const ListItemMeta = List.Item.Meta
 
 export default {
   name: "music",
   components: {
-    Audio,
     MusicPrevious,
     MusicPlay,
     MusicPause,
     MusicNext,
     PlayList,
-    MusicList
+    MusicList,
+    RepeatPlay,
+    AList: List,
+    AListItem: ListItem,
+    AListItemMeta: ListItemMeta,
   },
   computed: {
     ...mapGetters(['duration','showVolume'])
@@ -246,10 +270,10 @@ export default {
 
 <style lang="scss" scoped>
 .musicMain{
+  padding: 0 2px;
   position: absolute;
-  padding: 10px;
   width: 100%;
-  background-color: #666666;
+  //background-color: #666666;
   border-radius: 10px;
   .musicIcon{
     align-items: center;
@@ -279,17 +303,25 @@ export default {
   img{
     width: calc(54px * (var(--aspect-ratio)));
     max-width: 54px;
+    margin: 3px;
   }
 }
+.musicListIcon{
+  border-radius: 2px;
+  background-color: #6c6c6c;
+}
 .musicIcon{
-  display: flex;
+  position: relative;
   width: 100%;
+  display: flex;
   align-items: center;
+  justify-items: center;
+  margin: 20px 20px 0 ;
   .mr-1{
     width: 40px;
   }
   .mr-2{
-    width: 50px;
+    width: 45px;
   }
 }
 .musicList{
@@ -298,6 +330,14 @@ export default {
   margin-top: 1rem;
   color: var(--text-color);
   height: 450px;
+  overflow-y: scroll;
+  background-color: #fff;
+}
+.hide-music-list {
+  height: 0;
+  // visibility: hidden;
+  // opacity: 0;
+  margin-top: 0!important;
 }
 
 .MusicProgress {
@@ -331,14 +371,14 @@ export default {
     height: 3px;
     max-width: 100%;
     width: 0%;
-    background: #000;
+    background: #7f7f7f;
     .line-btn {
       position: absolute;
       right: 0px;
       content: "";
       width: 3px;
       height: 8px;
-      background: #000;
+      background: #7f7f7f;
       animation: playingBtn 2s ease-in-out infinite alternate;
 
       top: 50%;
@@ -349,7 +389,7 @@ export default {
     .line-btn:hover {
       right: -4px;
       width: 5px;
-      height: 10px;
+      height: 8px;
     }
   }
 }

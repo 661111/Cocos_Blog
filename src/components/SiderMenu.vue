@@ -25,7 +25,6 @@ export default {
   display: flex;
   box-sizing: border-box;
   .sticky-music{
-    background-color: #f8f8f8;
     width: 250px;
     height: 300px;
     border-radius: 10px;

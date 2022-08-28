@@ -72,10 +72,9 @@ name:'Base',
   z-index: 999;
 }
 .leftRow{
-  position: fixed;
-  width: 250px;
-  height: 80%;
-  z-index: 2;
+  position: absolute;
+  width: auto;
+  max-height: 80%;
   scrollbar-color: transparent transparent;
   scrollbar-track-color: transparent;
   -ms-scrollbar-track-color: transparent;
