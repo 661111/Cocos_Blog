@@ -73,9 +73,7 @@
 
 <div>
           <div class="child" v-if="!is_login && login_show" @click="showLogin">
-            <a-avatar src="https://joeschmoe.io/api/v1/random" :size="32">
-
-            </a-avatar>
+            <a-avatar src="https://joeschmoe.io/api/v1/random" :size="32" />
 
           </div>
   <div v-else-if="is_login" >
@@ -108,7 +106,7 @@
               <a-button key="submit" type="primary"  v-on:click="methods.login()">登陆</a-button>
             </template>
             <a-input
-                  v-model="account"
+                  v-model:value="account"
                   name="username"
                   type="text"
                   style="width: 280px"
@@ -117,7 +115,7 @@
               />
             <br/><br/>
               <a-input-password
-                  v-model="password"
+                  v-model:value="password"
                   name="password"
                   v-on:keyup.enter="methods.login()"
                   type="password"
@@ -261,7 +259,7 @@ return{
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 
 .modal-body {
   width: 100%;
@@ -412,7 +410,7 @@ return{
             content: "";
           }
           a:hover {
-            background: rgba($color: #000000, $alpha: 0.05);
+            //background: rgba(@color: #000000, @alpha: 0.05);
           }
           a:hover::before {
             display: none;
@@ -428,15 +426,15 @@ return{
         display: none;
       }
       input:hover {
-        background: rgba($color: #000000, $alpha: 0.1);
+        //background: rgba(color: #000000, alpha: 0.1);
       }
       input:focus {
-        background: rgba($color: #ffffff, $alpha: 1);
+        //background: rgba(color: #ffffff, alpha: 1);
       }
       .is-show-res-box {
         height: 450px;
         padding: 40px 10px 12px 10px;
-        background: rgba($color: #ffffff, $alpha: 1);
+        //background: rgba(color: #ffffff, alpha: 1);
         box-shadow: 0 0 13px 0 rgb(0 0 0 / 15%);
       }
     }

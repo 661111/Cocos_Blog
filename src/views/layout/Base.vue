@@ -56,7 +56,7 @@ name:'Base',
 }
 
 </script>
-<style lang="scss"   scoped>
+<style lang="less"   scoped>
 .top-nav-wrapper-master {
   position: fixed;
   max-width: 100%;
@@ -73,7 +73,7 @@ name:'Base',
 }
 .leftRow{
   position: absolute;
-  width: auto;
+
   max-height: 80%;
   scrollbar-color: transparent transparent;
   scrollbar-track-color: transparent;

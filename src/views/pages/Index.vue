@@ -144,9 +144,9 @@ setup(){
 }
 
 </script>
-<style  lang="scss" scoped>
+<style  lang="less" scoped>
 .articleMain{
-  background-color: #f8f8f8;
+  background-color: #f7f8f9;
   padding: 10px;
   max-width:100%  ;
   border-radius: 10px;
