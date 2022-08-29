@@ -9,31 +9,34 @@
     <div class="musicSong">
       <small>{{music.name}}</small>
       <span style="color:#4e4748"></span>
+      <div >
       <div class="MusicProgress">
         <div class="start-time">{{ methods.toTime(progress) || "00:00" }}</div>
         <div class="end-time"> {{ methods.toTime(duration) || "00:00" }}</div>
-        <div
-            :style="'width:' + progress + 'px'"
-            class="line"
-            ref="currentTime"
-        >
-          <span @mousedown="methods.Seeked" class="line-btn"></span>
-        </div>
+        <a-slider
+            :csp="{ nonce: 'YourNonceCode' }"
+            class="sliderLine"
+            v-model:value="progress"
+            :max="duration"
+            :step="1"
+            :tip-formatter="null"
+            @afterChange="methods.Seeked"
+        />
+       </div>
       </div>
-    </div>
+     </div>
     </div>
   </div>
-  <p class="musicIcon">
-    <span @click="methods.preMusic()" class="mr-1" data-stopPropagation="true"><MusicPrevious/></span>
-    <span v-show="!play" @click="methods.handlePauseOrPlay()" class="mr-2" data-stopPropagation="true"><MusicPlay/></span>
-    <span v-show="play"  @click="methods.handlePauseOrPlay()" class="mr-2" data-stopPropagation="true"><MusicPause/></span>
-    <span @click="methods.nextMusic()" class="mr-1" data-stopPropagation="true"><MusicNext/></span>
-    <MusicList @click="methods.Collapse" :class="showSheet ? 'musicListIcon': ''"/>
-    <span v-show="mode == 0" @click="methods.swMode" class="mr-1" ><RepeatPlay/></span>
+  <div class="musicIcon">
+    <MusicPrevious @click="methods.preMusic()"/>
+    <MusicPlay v-show="!play" @click="methods.handlePauseOrPlay()" />
+    <MusicPause v-show="play"  @click="methods.handlePauseOrPlay()"/>
+    <MusicNext @click="methods.nextMusic()"/>
+    <RepeatPlay v-show="mode == 0" @click="methods.swMode"/>
     <span v-show="mode == 1" @click="methods.swMode" class="mr-1" ></span>
     <span v-show="mode == 2" @click="methods.swMode" class="mr-1" ></span>
-
-  </p>
+    <button  @click="methods.Collapse" :class="showSheet ? 'musicListBtn': ''" class="listBtn" ><MusicList :class="showSheet ? 'playIcon': ''"/></button>
+  </div>
 
 <!--显示歌曲列表-->
   <div class="musicList" :class="!showSheet ? 'hide-music-list': ''">
@@ -73,10 +76,9 @@
 
 <script>
 import { GET } from '@/utils/http/request'
-import {reactive, toRefs, watch, onBeforeUnmount} from 'vue'
-import { onMounted } from "@vue/runtime-core";
+import {reactive, toRefs, watch, onBeforeUnmount,onMounted} from 'vue'
 import {mapGetters, useStore} from 'vuex'
-import {List} from "ant-design-vue";
+import {List,Slider} from "ant-design-vue";
 import MusicPrevious from '@/components/icons/MusicPrevious.vue'
 import MusicPlay  from '@/components/icons/MusicPlay.vue'
 import MusicPause from '@/components/icons/MusicPause.vue'
@@ -97,6 +99,7 @@ export default {
     PlayList,
     MusicList,
     RepeatPlay,
+    ASlider: Slider,
     AList: List,
     AListItem: ListItem,
     AListItemMeta: ListItemMeta,
@@ -115,9 +118,9 @@ export default {
       musicList: {},      //当前歌单歌曲列表
       music: {},          //当前播放音乐
       progress: 0,        //播放进度
-      volume: 0.7,
-      showVolume: false,
-      showSheet: false,
+      volume: 0.7,        //默认音量
+      showVolume: false,  //音量调节显示
+      showSheet: false,   //歌单显示
       sheetLength: 0,
       index: 0,
       sheetId: 0
@@ -140,7 +143,7 @@ export default {
       }
     });
     let timer = setInterval(() => {
-      if(state.play  ){
+      if(state.play ){
         state.progress += 1; //播放进度+1s
       }
     }, 1000)
@@ -273,7 +276,7 @@ export default {
   padding: 0 2px;
   position: absolute;
   width: 100%;
-  //background-color: #666666;
+  background-color: #f8f8f8;
   border-radius: 10px;
   .musicIcon{
     align-items: center;
@@ -306,23 +309,41 @@ export default {
     margin: 3px;
   }
 }
-.musicListIcon{
-  border-radius: 2px;
+.musicListBtn{
+  border-radius: 4px;
   background-color: #6c6c6c;
+
+}
+.playIcon{
+  fill: white;
 }
 .musicIcon{
   position: relative;
   width: 100%;
-  display: flex;
+  display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-items: center;
-  margin: 20px 20px 0 ;
+  margin: 10px 0 0  0;
   .mr-1{
     width: 40px;
   }
   .mr-2{
     width: 45px;
   }
+  svg{
+    max-width: 5rem;
+  }
+}
+.listBtn{
+  line-height: 100%;
+  width: 2rem;
+  line-height: 1rem;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  align-items: flex-end;
 }
 .musicList{
   overflow: auto;
@@ -332,6 +353,20 @@ export default {
   height: 450px;
   overflow-y: scroll;
   background-color: #fff;
+}
+::-webkit-scrollbar-track {
+  background-color: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: none;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: none;
 }
 .hide-music-list {
   height: 0;
@@ -345,7 +380,7 @@ export default {
   width: 100%;
   height: 2px;
   margin-bottom: 10px;
-  background: #bfbfc4;
+  //background: #bfbfc4;
   cursor: pointer;
   margin: 20px 20px 0 0 ;
   .start-time {
@@ -366,31 +401,31 @@ export default {
     position: absolute;
     left: 0;
     right: 10px;
+    border: 0;
     top: 0;
     border-radius: 3px;
     height: 3px;
-    max-width: 100%;
-    width: 0%;
+    width: 100%;
     background: #7f7f7f;
-    .line-btn {
-      position: absolute;
-      right: 0px;
-      content: "";
-      width: 3px;
-      height: 8px;
-      background: #7f7f7f;
-      animation: playingBtn 2s ease-in-out infinite alternate;
-
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-    .line-btn:hover {
-      right: -4px;
-      width: 5px;
-      height: 8px;
-    }
+    //.line-btn {
+    //  position: absolute;
+    //  right: 0px;
+    //  content: "";
+    //  width: 3px;
+    //  height: 8px;
+    //  background: #7f7f7f;
+    //  animation: playingBtn 2s ease-in-out infinite alternate;
+    //
+    //  top: 50%;
+    //  transform: translateY(-50%);
+    //  cursor: pointer;
+    //  transition: all 0.25s;
+    //}
+    //.line-btn:hover {
+    //  right: -4px;
+    //  width: 5px;
+    //  height: 8px;
+    //}
   }
 }
 </style>
