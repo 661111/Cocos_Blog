@@ -34,7 +34,7 @@
     <MusicPlay v-show="!play" @click="methods.handlePauseOrPlay()" />
     <MusicPause v-show="play"  @click="methods.handlePauseOrPlay()"/>
     <MusicNext @click="methods.nextMusic()"/>
-    <button  @click="methods.Collapse" :class="showSheet ? 'musicListBtn': ''" class="listBtn"  ><MusicList :class="showSheet ? 'playIcon': ''"/></button>
+    <button  @click="methods.Collapse" :class="showSheet ? 'musicListBtn': ''" class="listBtn"  style="background: none" ><MusicList :class="showSheet ? 'playIcon': ''"/></button>
   </div>
 
 <!--显示歌曲列表-->
@@ -273,11 +273,12 @@ export default {
 <style lang="less" scoped>
 .musicMain{
   top:1rem;
-  padding: 0 2px;
+  padding:.1rem 0 .5rem .1rem;
   position: absolute;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: @bgColor;
   border-radius: 10px;
+  box-shadow: @boxShadow;
   .musicIcon{
     align-items: center;
   }
@@ -311,7 +312,7 @@ export default {
 }
 .musicListBtn{
   border-radius: 4px;
-  background-color: #6c6c6c;
+  background-color: #6c6c6c!important;
 
 }
 .playIcon{
@@ -339,39 +340,37 @@ export default {
   line-height: 100%;
   width: 2rem;
   line-height: 1rem;
-  border: 0;
+  border: none;
   padding: 0;
   margin: 0;
   border-radius: 4px;
   align-items: flex-end;
-  ::after{
-    background: white;
-  }
 }
 .musicList{
   overflow: auto;
   overflow: hidden;
-  margin-top: 1rem;
+  margin-top: 0rem;
   color: var(--text-color);
   height: 450px;
   overflow-y: scroll;
-  background-color: #fff;
-}
-::-webkit-scrollbar-track {
-  background-color: none;
+  background-color: @bgColor;
+  ::-webkit-scrollbar-track {
+    background-color: none;
 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: none;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: none;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: none;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: none;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: none;
-}
-
-::-webkit-scrollbar-thumb:active {
-  background-color: none;
-}
 .hide-music-list {
   height: 0;
   // visibility: hidden;
@@ -400,14 +399,14 @@ export default {
     left: -6.3rem;
     bottom: -1rem;
     color: #999;
-    font-size: 10px;
+    font-size: .5rem;
   }
   .end-time {
     position: absolute;
     right: -.7rem;
     bottom: -2.5rem;
     color: #999;
-    font-size: 10px;
+    font-size: .5rem;
   }
 }
 </style>

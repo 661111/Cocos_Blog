@@ -146,17 +146,19 @@ setup(){
 </script>
 <style  lang="less" scoped>
 .articleMain{
-  background-color: #f7f8f9;
+  background-color: @bgColor;
   padding: 10px;
   max-width:100%  ;
   border-radius: 10px;
+  box-shadow: @boxShadow;
 }
 .articleBox{
   margin-bottom: 10px;
   padding: 20px 20px 0 20px;
-  max-width: 650px;
+  max-width: 50rem;
   background-color: white;
   border-radius: 10px;
+  box-shadow: @boxShadow;
 
 }
 .articleTitle{

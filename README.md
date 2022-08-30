@@ -1,14 +1,17 @@
-<center><h1>Cocos_Blog</h1></center>
+# Cocos_Blog
 
 
-#### 这个项目基于INIS博客系统使用[Vue3](https://cn.vuejs.org) + [Ant-Design-vue](https://www.antdv.com/)构建的前端
-如果你还未配置INIS系统  [点我配置INIS博客系统](https://inis.cc)
-
+## 前言🌸
+#### 项目使用INIS博客系统，基于[Vite](https://cn.vite.org) + [Vue3](https://cn.vuejs.org) + [Ant-Design-vue](https://www.antdv.com/) + ~~Sass~~ [Less](https://lesscss.org)构建的Blog前端主题
+- 如果你还未配置INIS系统  [点我配置INIS博客系统](https://inis.cc)<br/>
+- [演示站点](https://blog.crunl.cn)
 ## 思路想法
 
-2022年6月开始，9月新建文件夹
+- 2022年6月开始，9月新建文件夹
+- 简约布局，性能优秀
 
-[WebStore](#) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+
+[WebStore](#)  
 
 ## Customize configuration
 

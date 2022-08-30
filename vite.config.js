@@ -25,8 +25,9 @@ export default defineConfig ({
     preprocessorOptions: {
       less: {
           modifyVars: {
-
             'link-color': '#d3adf7',
+            'bgColor': '#FFFFFF',
+            'boxShadow': '0 0 0 1px rgb(188 195 206 / 10%),0 2px 10px rgb(48 55 66 / 6%)',
           },
         javascriptEnabled: true,
       }

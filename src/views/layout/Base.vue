@@ -82,7 +82,7 @@ name:'Base',
 .mainRow{
   width: calc(85% - 325px);
   margin-left: 325px;
-  margin-top: 50px;
+  margin-top: 5rem;
   padding: 10px;
   height: auto;
   border-radius: 10px;

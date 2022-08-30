@@ -16,11 +16,10 @@ export default {
   }
 }
 </script>
-
 <style lang="less" scoped>
 .siderBox{
-  margin-left: 60px;
-  margin-top: 10px;
+  position: relative;
+  margin-left: 5rem;
   padding: 0;
   box-sizing: border-box;
   .sticky-music{

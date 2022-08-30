@@ -17,5 +17,6 @@ import Audio from "@/components/tool/Audio.vue";
   <RouterView/>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
+@bgColor: #EEEEEE;
 </style>
