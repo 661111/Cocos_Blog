@@ -13,11 +13,7 @@ import axios from 'axios'
 import { inisHelper } from '@/utils/helper/helper.js'
 window.INIS = {
     api: 'https://inisapi.crunl.cn/api',
-<<<<<<< HEAD
     token: '47f8e3974a88cc31db69aec7904c262e',
-=======
-    token: '621f525a3b76f3a5a25e4e765ace5c41',
->>>>>>> refs/remotes/origin/dev
     route_hash: false,
     version: '1.0.1'
 }
