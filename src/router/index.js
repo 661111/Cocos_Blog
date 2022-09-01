@@ -30,6 +30,12 @@ const router = createRouter({
           name: 'photos',
           path: '/photos',
           component:  ()  =>  import('@/views/pages/Photos.vue')
+        },
+        {
+          title: '友链',
+          name: 'links',
+          path: '/links',
+          component: () => import('@/views/pages/Links.vue')
         }
       ],
       meta: {

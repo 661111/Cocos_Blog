@@ -56,6 +56,9 @@
           <div  class="child">
             <router-link to="/photos"><div>相册</div></router-link>
           </div>
+          <div class="child">
+            <router-link to="/links"><div>友链</div></router-link>
+          </div>
 <!--          导航结束-->
 
 <!--          深色主题切换按钮-->
