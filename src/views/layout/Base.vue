@@ -73,19 +73,20 @@ name:'Base',
 }
 .leftRow{
   position: absolute;
-
   max-height: 80%;
   scrollbar-color: transparent transparent;
   scrollbar-track-color: transparent;
   -ms-scrollbar-track-color: transparent;
 }
 .mainRow{
-  width: calc(85% - 325px);
-  margin-left: 325px;
-  margin-top: 5rem;
-  padding: 10px;
+  width: calc(100% - 35rem);
+  margin: 5rem 0 0 35rem;
+  padding: 1rem;
+  max-width: 76rem;
   height: auto;
-  border-radius: 10px;
+  border-radius: 1rem;
+  background: @bgColor;
+  box-shadow: @boxShadow;
 
 }
 </style>

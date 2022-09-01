@@ -19,7 +19,7 @@ export default {
 <style lang="less" scoped>
 .siderBox{
   position: relative;
-  margin-left: 5rem;
+  margin-left: 12rem;
   padding: 0;
   box-sizing: border-box;
   .sticky-music{
@@ -28,5 +28,14 @@ export default {
     border-radius: 10px;
   }
 }
+@media screen and (max-width: 1025px) {
+  .siderBox{
+    display: none;
+  }
+  .sticky-music{
+    display: none;
+  }
+}
+
 
 </style>

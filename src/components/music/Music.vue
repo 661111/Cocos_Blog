@@ -272,7 +272,6 @@ export default {
 
 <style lang="less" scoped>
 .musicMain{
-  top:1rem;
   padding:.1rem 0 .5rem .1rem;
   position: absolute;
   width: 100%;

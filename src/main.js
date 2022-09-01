@@ -7,7 +7,7 @@ import highlight from "@/utils/plugins/highlight";
 import {message} from "ant-design-vue"
 // import 'ant-design-vue/dist/antd.dark.css';
 import 'ant-design-vue/dist/antd.less';
-import 'ant-design-vue/dist/antd.dark.less';
+// import 'ant-design-vue/dist/antd.dark.less';
 import '@/assets/global.less'
 
 
