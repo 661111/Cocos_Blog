@@ -2,7 +2,7 @@
   <div class="articleMain">
     <div class="box">
     <div class="articleBox"  v-for="data in article_data" :key="data.id">
-      <a-skeleton active :loading="loading" >
+      <a-skeleton active :loading="loading" :paragraph="{ rows: 4 }" >
       <div class="articleTitle">
         <router-link :to="{name: 'article', params: { id: data.id }}">
        <h3><a href="#">{{data.title}}</a></h3>
@@ -247,7 +247,7 @@ setup(){
 .articleBox{
   position: relative;
   padding: 20px 20px 0 20px;
-  max-width: 50rem;
+  width: 50rem;
   border-radius: 10px;
   box-shadow: @boxShadow;
 
