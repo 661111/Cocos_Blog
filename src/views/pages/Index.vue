@@ -1,13 +1,12 @@
 <template>
   <div class="articleMain">
     <div class="box">
-    <div class="articleBox"  v-for="data in article_data" :key="data.id">
-      <a-skeleton active :loading="loading" :paragraph="{ rows: 4 }" >
+    <div class="content articleBox"  v-for="data in article_data" :key="data.id">
+      <a-skeleton active :loading="loading" style="width: 47rem" :paragraph="{ rows: 4 }" >
       <div class="articleTitle">
         <router-link :to="{name: 'article', params: { id: data.id }}">
-       <h3><a href="#">{{data.title}}</a></h3>
+       <p><a href="#">{{data.title}}</a></p>
         </router-link>
-        <h5> 发布于: {{data.create_time}}</h5>
       </div>
 
 <div class="articleD">
@@ -16,8 +15,31 @@
     <img :src="data.expand.img_src" height="100"/>
 
 </div>
+        <div style="font-size: 1rem;">
+          <span>{{format(data.create_time,'zh_CN')}}</span>
+          <a-divider type="vertical" style="height: 1rem; border-color: #000000" dashed />
+<!--          <eye-outlined />-->
+          <Eye />
+          <span style="margin: 0 1px 0 1px">{{ data.views || 0 }}</span>
+          <a-divider type="vertical" style="height: 1rem; border-color: #000000" dashed />
+          <icon >
+            <template #component>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="11.1865">
+                <g>
+                  <rect height="11.1865" opacity="0" width="14.0234" x="0" y="0"/>
+                  <path d="M3.2959 10.6396C3.55469 10.6396 3.73047 10.5518 4.04297 10.2783L6.09375 8.44238L5.52734 7.89551L3.49609 9.77051L3.49609 8.37402C3.49609 8.0957 3.33008 7.96875 3.11523 7.96875L2.16309 7.96875C1.29883 7.96875 0.786133 7.49512 0.786133 6.58691L0.786133 2.13867C0.786133 1.23047 1.29883 0.751953 2.16309 0.751953L9.05273 0.751953C9.91699 0.751953 10.4297 1.23047 10.4297 2.13867L10.4297 2.82227L11.2158 2.82227L11.2158 2.10938C11.2158 0.786133 10.4297 0.0146484 9.10156 0.0146484L2.11426 0.0146484C0.839844 0.0146484 0 0.786133 0 2.10938L0 6.60645C0 7.93457 0.839844 8.70117 2.11426 8.70117L2.75879 8.70117L2.75879 10.0391C2.75879 10.415 2.94922 10.6396 3.2959 10.6396Z" fill="#000000" fill-opacity="0.85"/>
+                  <path d="M11.25 11.1865C11.5869 11.1865 11.7773 10.9473 11.7773 10.5762L11.7773 9.4043L11.9824 9.4043C13.208 9.4043 14.0234 8.66211 14.0234 7.3877L14.0234 4.50195C14.0234 3.22266 13.208 2.48047 11.9824 2.48047L7.24121 2.48047C5.96191 2.48047 5.20508 3.22266 5.20508 4.50195L5.20508 7.3877C5.20508 8.66699 5.96191 9.4043 7.24121 9.4043L8.92578 9.4043L10.5566 10.8008C10.8545 11.0547 11.0156 11.1865 11.25 11.1865ZM11.0449 10.3027L9.47754 8.89648C9.28223 8.72559 9.16504 8.66699 8.89648 8.66699L7.29004 8.66699C6.47461 8.66699 5.98633 8.22754 5.98633 7.36328L5.99121 4.52637C5.99121 3.66699 6.47461 3.21777 7.29004 3.21777L11.9385 3.21777C12.749 3.21777 13.2373 3.66699 13.2373 4.52637L13.2373 7.36328C13.2373 8.22754 12.749 8.66699 11.9385 8.66699L11.4209 8.66699C11.2109 8.66699 11.0449 8.79395 11.0449 9.06738Z" fill="#000000" fill-opacity="0.85"/>
+                </g>
+              </svg>
+
+
+            </template>
+          </icon>
+          <span >{{ data.expand.comments.count }}</span>
+        </div>
       </a-skeleton>
-      <a-divider style="height: 1px; background-color: #efdbff"/>
+<!--      <a-divider style="height: 1px; background-color: #efdbff"/>-->
+<!--      分割线-->
     </div>
       <div class="articleFooter">
   <h3 v-show="last_page">没有更多了！</h3>
@@ -25,7 +47,7 @@
       </div>
     </div>
     <div class="articleSiderBox">
-      <a-badge-ribbon text="站点信息">
+      <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px" text="站点信息" color="#FF3B30">
       <a-card>
         <div class="webSiteData">
           <div>
@@ -43,7 +65,7 @@
         </div>
       </a-card>
       </a-badge-ribbon>
-      <a-badge-ribbon text="热门标签" color="#b37feb">
+      <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px" text="热门标签" color="#FFCC00">
       <a-card>
         <div class="hot-message">
           <div >
@@ -52,7 +74,7 @@
         </div>
       </a-card>
       </a-badge-ribbon>
-      <a-badge-ribbon text="性能检测" color="pink">
+      <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px"  text="性能检测" color="#34C759">
         <a-card>
       <div class="performanceMSG">
         <div style="width: 100%">
@@ -91,7 +113,9 @@ import {mapState, useStore} from "vuex";
 import {onBeforeUpdate, onMounted, reactive, ref, toRefs} from "vue";
 import {inisHelper} from "@/utils/helper/helper";
 import {Layout,Row,Col,List,Divider,Button,Skeleton,Tag,Progress,Badge,Card} from "ant-design-vue";
-
+import Icon, {EyeOutlined } from "@ant-design/icons-vue";
+import { format } from 'timeago.js';
+import Eye from "@/components/icons/Eye.vue";
 const LayoutContent = Layout.Content
 const ListItem  = List.Item
 const ListItemMeta = List.Item.Meta
@@ -100,6 +124,7 @@ const BadgeRibbon = Badge.Ribbon
 export default {
 name:'Index',
   components: {
+    Eye,
     Layout,
     Row,
     Col,
@@ -111,6 +136,8 @@ name:'Index',
     Progress,
     Badge,
     Card,
+    Icon,
+    EyeOutlined,
     ABadgeRibbon: BadgeRibbon,
     AListItem: ListItem,
     AListItemMeta: ListItemMeta,
@@ -204,7 +231,7 @@ setup(){
     const performance = inisHelper.performance(true)
     state.performance = performance
   })
-  return{...toRefs(state), methods,loading}
+  return{...toRefs(state), methods,loading,format}
 },
   computed: {
     ...mapState(['cocos_config']),
@@ -221,7 +248,7 @@ setup(){
         })
         return result
       }
-    }
+    },
   }
 
 
@@ -230,14 +257,14 @@ setup(){
 </script>
 <style  lang="less" scoped>
 .articleMain{
-  padding: 10px;
-  max-width:100%;
-  border-radius: 10px;
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  overflow: hidden;
   .articleSiderBox{
-    position: relative;
     margin: 0 0 0 2rem;
     min-width: 20rem;
     display: inline;
@@ -245,20 +272,26 @@ setup(){
   }
 }
 .articleBox{
+  margin-bottom: 2rem;
+  line-height: 4rem;
   position: relative;
   padding: 20px 20px 0 20px;
-  width: 50rem;
-  border-radius: 10px;
+  overflow: hidden;
   box-shadow: @boxShadow;
-
 }
 .articleTitle{
   display: flex;
 align-items: center;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  line-clamp: 2;
 }
 .articleD {
   display: flex;
   box-sizing: content-box;
+  overflow: hidden;
+  font-size: 12px;
     img{
       margin-left: auto;
       max-width: 14rem;
@@ -283,5 +316,24 @@ align-items: center;
 }
 .performanceMSG {
   margin-top: 1rem;
+}
+@media screen and (max-width: 800px) {
+  .articleMain {
+    min-width: 100%;
+    width: 100%;
+    transition: all 0.25s;
+    .articleSiderBox {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+  }
+  .articleD {
+    height: 10rem;
+    img{
+      width: auto;
+    }
+  }
+
 }
 </style>

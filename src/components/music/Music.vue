@@ -1,5 +1,5 @@
 <template>
-<div class="musicMain" >
+<div class="content musicMain" >
   <div class="playback-info">
 
     <div class="musicImg">
@@ -273,11 +273,6 @@ export default {
 <style lang="less" scoped>
 .musicMain{
   padding:.1rem 0 .5rem .1rem;
-  position: absolute;
-  width: 100%;
-  background-color: @bgColor;
-  border-radius: 10px;
-  box-shadow: @boxShadow;
   .musicIcon{
     align-items: center;
   }

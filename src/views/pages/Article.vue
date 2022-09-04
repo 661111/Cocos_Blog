@@ -4,17 +4,18 @@
       :title="article.title"
       class="site-page-header"
       :sub-title="article.last_update_time"
-      @back="() => null"
+      @back="() => $router.go (-1)"
       >
 
   <div class="content">
     <a-row class="contentRow">
-      <div v-code-highlight v-html="article.content" class="mackdown"></div>
+      <div  v-html="article.content" class="article-content text-left my-2 py-1"></div>
     </a-row>
   </div>
   </a-page-header>
 </div>
 </template>
+
 <!--    <div class="row">-->
 <!--      <div class="col">-->
 <!--        <div class="articleTitle">-->
@@ -33,7 +34,7 @@ import {onBeforeRouteUpdate, useRoute} from "vue-router";
 import {inisHelper} from "@/utils/helper/helper";
 import {notification,PageHeader,Image} from "ant-design-vue";
 import {GET} from "@/utils/http/request";
-
+import '/src/assets/css/markdown.less'
 
 export default {
   name: "Article",
@@ -133,7 +134,7 @@ export default {
         GET('options', { params }).then(res => {
           if (res.data.code == 200) {
             const result = res.data.data
-            methods.setShow(result.opt)
+            // methods.setShow(result.opt)
           }
         })
       },
@@ -158,6 +159,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import url(@/assets/css/codeStyle.less);
 .articleRow{
   max-width: 80%;
   height: auto;

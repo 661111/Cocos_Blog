@@ -53,6 +53,9 @@
       <div class="right">
         <div class="right-links">
 <!--          导航开始-->
+          <div class="child">
+            <router-link to="/">首页</router-link>
+          </div>
           <div  class="child">
             <router-link to="/photos"><div>相册</div></router-link>
           </div>

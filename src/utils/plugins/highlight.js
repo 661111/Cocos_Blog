@@ -1,12 +1,16 @@
-// import svgIcon from '@/components/tool/SvgIcon'
-import hljs from "highlight.js";
-import {inisHelper} from "@/utils/helper/helper";
-
+// SVG 组件
+import svgIcon from '@/components/tool/SvgIcon.vue'
+// 代码高亮
+import hljs from 'highlight.js'
+import { inisHelper } from '@/utils/helper/helper.js'
 
 const highlight = {
     install: Vue => {
-        // Vue.component('svg-icon', svgIcon)
-        // Vue.component('select2', select2)
+
+        // 定义全局组件
+        Vue.component('svg-icon', svgIcon)
+
+        // 自定义一个代码高亮指令
         Vue.directive('code-highlight',(el)=>{
             el.querySelectorAll('pre').forEach((pre)=>{
                 // 检查初始化
@@ -34,16 +38,13 @@ const highlight = {
 
             })
             // 复制操作
-            el.querySelectorAll('pre').forEach((item)=>{
-                item.firstChild.firstChild.lastChild.onclick = function(){
-                    var innerText = item.lastChild.innerText.replace(/\n\n/mg,'\n')
-                    // inisHelper.set.copy.text(innerText)
-                    const { toClipboard } = useClipboard()
-                    toClipboard(innerText)
-                    message.success('复制成功！')
-                }
-            })
+
         })
     }
 }
+
+// const req = require.context('@/assets/svg', false, /\.svg$/)
+// const requireAll = requireContext => requireContext.keys().map(requireContext)
+// requireAll(req)
+
 export default highlight

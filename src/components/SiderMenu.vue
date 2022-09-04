@@ -1,39 +1,54 @@
 <template>
-  <div class="siderBox">
-    <div class="sticky-music">
-<Music/>
-    </div>
+  <div class="leftRow">
+    <LeftMenu/>
+    <Music/>
   </div>
-
 </template>
 
 <script>
 import Music from "@/components/music/Music.vue";
+import LeftMenu from "@/components/leftMenu/LeftMenu.vue";
 export default {
   name: "SiderMenu",
   components: {
+    LeftMenu,
     Music
   }
 }
 </script>
 <style lang="less" scoped>
-.siderBox{
-  position: relative;
-  margin-left: 12rem;
-  padding: 0;
+.leftRow{
+  display: block;
+  //margin-left: 12rem;
+  padding: 50px 4px 4px 4px;
   box-sizing: border-box;
-  .sticky-music{
-    width: 250px;
-    height: auto;
-    border-radius: 10px;
+    div {
+    margin-bottom: 1.5rem;
+  }
+   div:first-child {
+    margin-top: 1rem;
+  }
+   div:last-child {
+    margin-bottom: 5rem;
   }
 }
+
+
+
+
 @media screen and (max-width: 1025px) {
-  .siderBox{
+  .leftRow {
     display: none;
+    padding: 51px 14px 14px 14px;
   }
-  .sticky-music{
-    display: none;
+   div {
+    margin-bottom: 14px;
+  }
+   div:first-child {
+    margin-top: 18px;
+  }
+  div:last-child {
+    margin-bottom: 50px;
   }
 }
 
