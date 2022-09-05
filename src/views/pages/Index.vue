@@ -43,7 +43,7 @@
     </div>
       <div class="articleFooter">
   <h3 v-show="last_page">没有更多了！</h3>
-  <a-button v-show="!last_page" v-on:click="methods.getArticle(self_page + 1)" danger shape="round" >加载更多</a-button>
+  <a-button v-show="!last_page" v-on:click="methods.getArticle(self_page + 1)" type="primary" shape="round" >﹒﹒﹒</a-button>
       </div>
     </div>
     <div class="articleSiderBox">

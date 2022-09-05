@@ -7,26 +7,14 @@
       @back="() => $router.go (-1)"
       >
 
-  <div class="content">
-    <a-row class="contentRow">
-      <div  v-html="article.content" class="article-content text-left my-2 py-1"></div>
-    </a-row>
+  <div class="article-content">
+
+      <div v-code-highlight v-html="article.content" class="article-content text-left my-2 py-1"></div>
+
   </div>
   </a-page-header>
 </div>
 </template>
-
-<!--    <div class="row">-->
-<!--      <div class="col">-->
-<!--        <div class="articleTitle">-->
-
-
-<!--          <span class="font-12px">-->
-
-<!--          </span>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
 <script>
 import {onMounted, reactive, toRefs} from "vue";
 import {mapState, useStore} from "vuex";
@@ -161,7 +149,7 @@ export default {
 <style lang="less" scoped>
 @import url(@/assets/css/codeStyle.less);
 .articleRow{
-  max-width: 80%;
+  max-width: 100%;
   height: auto;
 }
 #article img{
