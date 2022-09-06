@@ -2,8 +2,8 @@
 <div class="content menuList">
   <div class="listData">
 
-    <div class="listData-wrapper" v-for="(item, index) in listData" :key="index" >
-        <router-link class="menu-child" :to="item.path">{{ item.title }}</router-link>
+    <div class="listData-wrapper" v-for="(item, index) in listData" :key="index">
+        <router-link class="menu-child"   @click="active = item.path" :class="{ active: active == item.path }" :to="item.path">{{ item.title }}</router-link>
     </div>
   </div>
 </div>
@@ -37,21 +37,25 @@ export default {
         }
       ],
     })
+
 const methods = {
 
+      methods: {
+    },
 
 }
     onMounted(() => {
 
     })
     return { ...toRefs(state), methods }
+
   },
   // watch: {
   //   $route: function () {
   //     this.active = this.$route.path;
   //   },
   // },
-  // ounted() {
+  // mounted() {
   //   this.active = this.$route.path;
   // },
 }
@@ -60,7 +64,7 @@ const methods = {
 <style lang="less" scoped>
 .menuList {
   width: 100%;
-  padding: 2rem;
+  //padding: 2rem;
   z-index: 999;
 }
 .listData{
@@ -73,9 +77,9 @@ const methods = {
       position: relative;
       display: flex;
       width: 100%;
-        padding: 0px 5px 0px 48px;
+        padding: 0px 5px 0px 40px;
       margin: 0px;
-      font-size: 16px;
+      font-size: 14px;
       background-image: none;
       text-align: left;
       height: 35px;
@@ -84,11 +88,12 @@ const methods = {
     }
   }
   :hover {
-    background: black;
-    border-radius: .5rem;
+    font-size: 15px !important;
+    color: @link-color !important;
   }
   .active {
-    background: #EEe!important;
+    background: rgba(0,0,0,0.2)!important;
+    color: #000 !important;
     border-radius: .5rem;
   }
 }

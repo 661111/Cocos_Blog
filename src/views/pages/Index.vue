@@ -48,7 +48,7 @@
     </div>
     <div class="articleSiderBox">
       <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px" text="站点信息" color="#FF3B30">
-      <a-card>
+      <a-card style="margin-bottom: 1.5rem">
         <div class="webSiteData">
           <div>
             <span>访问</span>
@@ -65,8 +65,8 @@
         </div>
       </a-card>
       </a-badge-ribbon>
-      <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px" text="热门标签" color="#FFCC00">
-      <a-card>
+      <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px;" text="热门标签" color="#FFCC00" >
+      <a-card style="margin-bottom: 1.5rem">
         <div class="hot-message">
           <div >
             <a-tag color="pink" v-for="data in tags_data" :key="data">#{{data.name}}</a-tag>
@@ -321,7 +321,14 @@ align-items: center;
   .articleMain {
     min-width: 100%;
     width: 100%;
+padding: 1px;
     transition: all 0.25s;
+    .articleBox {
+      width: 100%;
+      img{
+        width: auto;
+      }
+    }
     .articleSiderBox {
       display: none;
       width: 0;

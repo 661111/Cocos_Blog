@@ -8,8 +8,7 @@ import {message} from "ant-design-vue"
 // import 'ant-design-vue/dist/antd.less';
 // import 'ant-design-vue/dist/antd.dark.less';
 import '@/assets/global.less';
-// import '@/assets/css/markdown.less'
-import '@/assets/css/codeStyle.less'
+import '/public/static/config.js';
 
 const app = createApp(App)
 

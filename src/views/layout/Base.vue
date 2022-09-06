@@ -96,7 +96,7 @@ name:'Base',
   .mainRow{
     width: calc(100% - 24rem);
     margin-left: 24rem;
-    margin-top: 5rem;
+    margin-top: 4rem;
     padding: 2rem;
     height: auto;
     background: @bgColor;
@@ -129,6 +129,7 @@ name:'Base',
       width: 100%;
       margin-left: 0px;
       margin-top: 70px;
+      padding: 0;
       transition: opacity 0.25s;
     }
   }
