@@ -347,7 +347,7 @@ export default {
   color: var(--text-color);
   height: 450px;
   overflow-y: scroll;
-  background-color: @bgColor;
+  background-color: @body-background;
   ::-webkit-scrollbar-track {
     background-color: none;
 

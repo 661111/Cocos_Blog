@@ -18,5 +18,5 @@ import Audio from "@/components/tool/Audio.vue";
 </template>
 
 <style lang="less" scoped>
-@bgColor: #EEEEEE;
+//@bgColor: #EEEEEE;
 </style>

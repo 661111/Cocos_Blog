@@ -96,11 +96,11 @@ name:'Base',
   .mainRow{
     width: calc(100% - 24rem);
     margin-left: 24rem;
-    margin-top: 5rem;
+    margin-top: 4rem;
     padding: 2rem;
     height: auto;
-    background: @bgColor;
-    box-shadow: @boxShadow;
+    //background: @body-background;
+    box-shadow: 0 0 0 1px rgb(188 195 206 / 10%),0 2px 10px rgb(48 55 66 / 6%);
   }
 }
 
@@ -129,6 +129,7 @@ name:'Base',
       width: 100%;
       margin-left: 0px;
       margin-top: 70px;
+      padding: 0;
       transition: opacity 0.25s;
     }
   }

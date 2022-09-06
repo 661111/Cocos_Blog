@@ -7,7 +7,7 @@
       @back="() => $router.go (-1)"
       >
 
-  <div class="article-content">
+  <div class="articleContent">
 
       <div v-code-highlight v-html="article.content" class="article-content text-left my-2 py-1"></div>
 
@@ -22,7 +22,9 @@ import {onBeforeRouteUpdate, useRoute} from "vue-router";
 import {inisHelper} from "@/utils/helper/helper";
 import {notification,PageHeader,Image} from "ant-design-vue";
 import {GET} from "@/utils/http/request";
-import '/src/assets/css/markdown.less'
+import '/src/assets/css/markdown.less';
+import '@/assets/css/codeStyle.less'
+import 'highlight.js/styles/base16/solarized-light.css'
 
 export default {
   name: "Article",
@@ -147,7 +149,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import url(@/assets/css/codeStyle.less);
 .articleRow{
   max-width: 100%;
   height: auto;

@@ -26,7 +26,7 @@ export default {
     margin-bottom: 1.5rem;
   }
    div:first-child {
-    margin-top: 1rem;
+    margin-top: 0rem;
   }
    div:last-child {
     margin-bottom: 5rem;
@@ -39,13 +39,13 @@ export default {
 @media screen and (max-width: 1025px) {
   .leftRow {
     display: none;
-    padding: 51px 14px 14px 14px;
+    padding: 50px 14px 14px 14px;
   }
    div {
     margin-bottom: 14px;
   }
    div:first-child {
-    margin-top: 18px;
+    margin-top: 1rem;
   }
   div:last-child {
     margin-bottom: 50px;
