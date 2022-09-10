@@ -11,7 +11,7 @@
 import qs from 'qs'
 import axios from 'axios'
 import { inisHelper } from '@/utils/helper/helper.js'
-import '/public/static/config.js'
+import "/public/static/config.js"
 const instance = axios.create({
     baseURL: inisHelper.customProcessApi(INIS.api),
     timeout: 60 * 1000,

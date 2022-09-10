@@ -2,17 +2,17 @@
   <div class="articleMain">
     <div class="box">
       <a-affix :offset-top="top">
-        <div class="articleTop" style="z-index: 999;width: 100%;position: relative;display: flex;">
+        <div class="articleTop">
 <!--          <a-tabs :tab-position="mode" >-->
 <!--            <a-tab-pane key="1" tab="全部" @click="methods.getArticle()"/>-->
 <!--          </a-tabs>-->
-          <a-tabs style="width: 100%; padding: 0" :tab-position="Horizontal" v-model:activeKey="activeKey">
-            <a-tab-pane key="1" tab="all"></a-tab-pane>
+          <a-tabs style="width: 100%;" tab-position="Horizontal" v-model:activeKey="activeKey">
+            <a-tab-pane key="1" tab="全部"></a-tab-pane>
           </a-tabs>
         </div>
       </a-affix>
     <div class="content articleBox"  v-for="data in article_data" :key="data.id">
-      <a-skeleton active :loading="loading" style="width: 47rem" :paragraph="{ rows: 4 }" >
+      <a-skeleton active :loading="loading" style="width: 50rem" :paragraph="{ rows: 4 }" >
       <div class="articleTitle">
         <router-link :to="{name: 'article', params: { id: data.id }}">
        <p><a href="#">{{data.title}}</a></p>
@@ -58,7 +58,7 @@
     </div>
     <div class="articleSiderBox">
       <a-affix :offset-top="20">
-      <div style="width: 100%;">
+      <div style="text-align: center">
         <a-switch v-model:checked="checked" @change="changeTheme" checked-children="暗" un-checked-children="亮" />
       </div>
 
@@ -331,12 +331,15 @@ setup(){
   box-shadow: 0 0 0 1px rgb(188 195 206 / 10%),0 2px 10px rgb(48 55 66 / 6%);
 }
 .articleTop {
-  background: rgba(20, 20, 20, 0.7);
+  z-index: 999;
+  display: flex;
+  max-width: 100%;
+  background: @blurBg;
   backdrop-filter: saturate(200%) blur(20px);
 }
 .articleTitle{
   display: flex;
-align-items: center;
+  align-items: center;
   overflow: hidden;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
@@ -347,6 +350,7 @@ align-items: center;
   box-sizing: content-box;
   overflow: hidden;
   font-size: 12px;
+  max-width: 100%;
     img{
       margin-left: auto;
       max-width: 14rem;

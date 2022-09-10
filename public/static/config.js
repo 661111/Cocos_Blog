@@ -1,6 +1,6 @@
 window.INIS = {
 
-    api: 'https://test.inis.cn/api',
+    api: 'https://inisapi.crunl.cn/api',
 
     token: '47f8e3974a88cc31db69aec7904c262e',
 
@@ -8,8 +8,4 @@ window.INIS = {
 
     version: '1.0.1'
 
-}
-
-export default {
-    INIS,
 }
