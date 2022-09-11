@@ -28,9 +28,9 @@
       </div>
     </div>
     <div class="musicIcon">
-      <RepeatPlay v-show="mode == 0" @click="methods.swMode" style="fill: #999999"/>
-      <span v-show="mode == 1" @click="methods.swMode" class="mr-1" ></span>
-      <span v-show="mode == 2" @click="methods.swMode" class="mr-1" ></span>
+<!--      <RepeatPlay v-show="mode == 0" @click="methods.swMode" style="fill: #999999"/>-->
+<!--      <span v-show="mode == 1" @click="methods.swMode" class="mr-1" ></span>-->
+<!--      <span v-show="mode == 2" @click="methods.swMode" class="mr-1" ></span>-->
       <MusicPrevious @click="methods.preMusic()"/>
       <MusicPlay v-show="!play" @click="methods.handlePauseOrPlay()" />
       <MusicPause v-show="play"  @click="methods.handlePauseOrPlay()"/>
@@ -314,9 +314,10 @@
   }
   .musicIcon{
     position: relative;
+    padding-left: 4.7rem;
     width: 100%;
     display: inline-flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-items: center;
     //margin: 10px 0 0  0;
@@ -327,6 +328,8 @@
   }
   .listBtn{
     line-height: 100%;
+    position: absolute;
+    right: 2px;
     width: 2rem;
     line-height: 1rem;
     border: none;
