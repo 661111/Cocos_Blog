@@ -273,7 +273,7 @@
 
   <style lang="less" scoped>
   .musicMain{
-    padding:.1rem 0 .5rem .1rem;
+    padding:.1rem 0 .1rem .1rem;
     .musicIcon{
       align-items: center;
     }
@@ -293,6 +293,7 @@
   }
   .musicSong{
     align-items: center;
+    padding: .2rem;
   }
   .musicImg{
     width: 100%;
@@ -300,7 +301,7 @@
     img{
       width: calc(54px * (var(--aspect-ratio)));
       max-width: 54px;
-      margin: 5px;
+      margin-left: .5rem;
       border-radius: .8rem;
     }
   }
