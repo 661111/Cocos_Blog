@@ -59,7 +59,7 @@
     <div class="articleSiderBox">
       <a-affix :offset-top="20">
       <div style="text-align: center">
-        <a-switch v-model:checked="checked" @change="changeTheme" checked-children="暗" un-checked-children="亮" />
+        <a-switch v-model:checked="checked" @change="changeTheme" checked-children="🌙" un-checked-children="☀️" />
       </div>
 
       <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px" text="站点信息" color="#FF3B30">
@@ -103,7 +103,7 @@
               :percent="(performance.ram.rate * 100).toFixed(1)"
           />
           <small>白屏时间:{{performance.blank.value || 0}}ms</small>
-          <small>DOM解析：{{performance.dom.parse.value || 0}}ms</small>
+          <small>  DOM解析：{{performance.dom.parse.value || 0}}ms</small>
           <br/>
           <span>DOM解析占用:</span>
           <a-progress

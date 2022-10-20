@@ -1,5 +1,5 @@
 <template>
-<h1>this me photos</h1>
+<h1>懒🫠</h1>
 </template>
 
 <script>

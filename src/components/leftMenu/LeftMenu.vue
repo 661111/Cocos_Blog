@@ -46,7 +46,7 @@ export default {
         },
         {
           path: '/photos',
-          title: '关于',
+          title: '相册',
           icon: ''
         }
       ],
