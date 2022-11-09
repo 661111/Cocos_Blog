@@ -92,8 +92,9 @@ export default {
           }
         })
       },
+        // `sort_id,=,${sort_id};is_show,=,1`
       getLinksList( sort_id, index, name){
-        let params = {where: `sort_id,=,${sort_id};is_show,=,1`,order: "create_time asc",limit: 9999,}
+        let params = {whereOr:`sort_id=${sort_id}` ,order: "create_time asc",limit: 9999,}
         GET('links/sql',{
           params
         }).then(res => {
