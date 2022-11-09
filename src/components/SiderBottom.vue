@@ -28,7 +28,7 @@ export default {
         })
         console.log("切换为深色主题");
         message.open({
-          content:"切换为浅色主题",
+          content:"切换为深色主题",
           icon: () => "🌙️"
         });
       } else {
