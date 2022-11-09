@@ -8,7 +8,7 @@
       <div>
       <div class="musicSong">
         <span>{{music.name}}</span>
-        <p style="color:#454545">{{music.author}}</p>
+        <p style="color:#999">{{music.author}}</p>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
   <!--显示歌曲列表-->
     <div class="musicList openMusicList" :class="!showSheet ? 'hide-music-list': ''">
       <div class="musicinfo">
-        <a-list size="small" :data-source="musicList.songs">
+        <a-list size="small" :split="false" :data-source="musicList.songs">
           <template #renderItem="{ item }">
           <a-list-item style="padding: 0">
             <a-list-item-meta :description="item.author" >
@@ -118,7 +118,7 @@
         musicList: {},      //当前歌单歌曲列表
         music: {},          //当前播放音乐
         progress: 0,        //播放进度
-        volume: 0.7,        //默认音量
+        volume: 1,        //默认音量
         showVolume: false,  //音量调节显示
         showSheet: false,   //歌单显示
         sheetLength: 0,
@@ -164,8 +164,8 @@
           });
         },
         async getMusicList(id) {
-          let params = { id,mode:'list' };
-          await GET("music", { params }).then((res) => {
+          let params = { id };
+          await GET("music/list", { params }).then((res) => {
             if (res.data.code == 200) {
               state.musicList = res.data.data;
               state.sheetLength = res.data.data.songs.length;
@@ -180,10 +180,9 @@
         async getMusic(id, type) {
           let params = {
             id,
-            mode: "song",
-            who: type,
+            who: type
           };
-          await GET("music", { params }).then((res) => {
+          await GET("music/song", {params}).then((res) => {
             if ((res.data.code = 200)) {
               state.music = res.data.data;
             }
@@ -347,22 +346,28 @@
     height: 450px;
     overflow-y: scroll;
     background-color: @body-background;
-    ::-webkit-scrollbar-track {
-      background-color: none;
 
-    }
+    //::-webkit-scrollbar-track {
+    //  background-color: none;
+    //
+    //}
+    //
+    //::-webkit-scrollbar-thumb {
+    //  background-color: none;
+    //}
+    //::-webkit-scrollbar-thumb:hover {
+    //  background-color: none;
+    //}
+    //
+    //::-webkit-scrollbar-thumb:active {
+    //  background-color: none;
+    //}
 
-    ::-webkit-scrollbar-thumb {
-      background-color: none;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: none;
-    }
-
-    ::-webkit-scrollbar-thumb:active {
-      background-color: none;
-    }
   }
+  .musicList::-webkit-scrollbar {
+    display: none;
+  }
+
 
   .hide-music-list {
     height: 0;
