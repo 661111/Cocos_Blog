@@ -3,7 +3,7 @@
   <div class="leftRow">
     <div  v-html="cocos_config.developer.footer.left"></div>
     <div>
-      <a-tag color="blue">Cocos © 2022</a-tag>
+      <a-tag color="blue">Riecko © 2022</a-tag>
     </div>
   </div>
   <div class="rightRow">

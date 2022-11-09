@@ -56,7 +56,7 @@
     },
     "footer": {
       "left"        :  "<span class=\"item left bg-danger ml-1\"></span><span class=\"item right bg-success\"><a href=\"//inis.cn\" target=\"_blank\"></a></span>",
-      "right"       :  "<span class=\"item left bg-info\"><a href=\"//racns.com/inis.html\" target=\"_blank\">自定义脚</a></span><span class=\"item right bg-light mr-1\"><a href=\"//inis.cc\" target=\"_blank\">右边</a></span>"
+      "right"       :  ""
     }
   }
 

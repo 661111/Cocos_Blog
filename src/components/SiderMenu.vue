@@ -2,17 +2,20 @@
   <div class="leftRow">
     <LeftMenu/>
     <Music/>
+    <sider-bottom></sider-bottom>
   </div>
 </template>
 
 <script>
 import Music from "@/components/music/Music.vue";
 import LeftMenu from "@/components/leftMenu/LeftMenu.vue";
+import SiderBottom from "@/components/SiderBottom.vue";
 export default {
   name: "SiderMenu",
   components: {
     LeftMenu,
-    Music
+    Music,
+    SiderBottom
   }
 }
 </script>

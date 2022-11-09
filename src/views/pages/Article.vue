@@ -75,7 +75,7 @@ export default {
       },
       checkArticle () {
         GET('article/sql', {
-          params: { where: `id=${state.id};`, 'login-token': `${store.state.login['login-token']}` }
+          params: { where: `id=${state.id}`, 'login-token': `${store.state.login['login-token']}` }
         }).then(res => {
           if (res.data.code == 200) {
             const result = res.data.data

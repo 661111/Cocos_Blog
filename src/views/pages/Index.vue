@@ -12,7 +12,7 @@
         </div>
       </a-affix>
     <div class="content articleBox"  v-for="data in article_data" :key="data.id">
-      <a-skeleton active :loading="loading" style="width: 50rem" :paragraph="{ rows: 4 }" >
+      <a-skeleton active :loading="loading"  :paragraph="{ rows: 3 }" >
       <div class="articleTitle">
         <router-link :to="{name: 'article', params: { id: data.id }}">
        <p><a href="#">{{data.title}}</a></p>
@@ -58,9 +58,7 @@
     </div>
     <div class="articleSiderBox">
       <a-affix :offset-top="20">
-      <div style="text-align: center">
-        <a-switch v-model:checked="checked" @change="changeTheme" checked-children="🌙" un-checked-children="☀️" />
-      </div>
+
 
       <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px" text="站点信息" color="#FF3B30">
       <a-card style="margin-bottom: 1.5rem">
@@ -100,10 +98,10 @@
               '50%': '#108ee9',
               '100%': '#f5222d',
       }"
-              :percent="(performance.ram.rate * 100).toFixed(1)"
+              :percent="(performance.ram.rate * 10).toFixed(1)"
           />
-          <small>白屏时间:{{performance.blank.value || 0}}ms</small>
-          <small>  DOM解析：{{performance.dom.parse.value || 0}}ms</small>
+          <small style="float: left">白屏时间:{{performance.blank.value || 0}}ms</small>
+          <small style="float: right">  DOM解析：{{performance.dom.parse.value || 0}}ms</small>
           <br/>
           <span>DOM解析占用:</span>
           <a-progress
@@ -194,12 +192,12 @@ setup(){
       toggleTheme({
         scopeName: "darkTheme",
       })
-      console.log("已经是默认主题");
+      console.log("已经是深色主题");
     } else {
       toggleTheme({
         scopeName: "defaultTheme",
       })
-      console.log("已切换为深色主题");
+      console.log("已切换为浅色主题");
     }
   };
   const methods = {
@@ -233,7 +231,7 @@ setup(){
             document.title = store.state.cocos_config.basic.site.title
             setTimeout(() => {
               loading.value = false;
-            }, 1500);
+            }, 0);
           }
         })
       } else state.last_page = true
@@ -376,14 +374,15 @@ setup(){
 .performanceMSG {
   margin-top: 1rem;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1228px) {
   .articleMain {
-    min-width: 100%;
-    width: 100%;
-padding: 1px;
+    min-width: 375px;
+    //width: 100%;
+    padding:10px;
+    border-radius: 10px;
     transition: all 0.25s;
     .articleBox {
-      width: 100%;
+      //width: 100%;
       img{
         width: auto;
       }

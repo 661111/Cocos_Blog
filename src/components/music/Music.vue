@@ -342,6 +342,7 @@
     overflow: auto;
     overflow: hidden;
     margin-top: 0rem;
+    margin-bottom: 5px;
     color: var(--text-color);
     height: 450px;
     overflow-y: scroll;
