@@ -60,7 +60,7 @@
       <a-affix :offset-top="20">
 
 
-      <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px" text="站点信息" color="#FF3B30">
+      <a-badge-ribbon style="height: 2rem;width: 5rem;" text="站点信息" color="#FF3B30">
       <a-card style="margin-bottom: 1.5rem">
         <div class="webSiteData">
           <div>
@@ -78,7 +78,7 @@
         </div>
       </a-card>
       </a-badge-ribbon>
-      <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px;" text="热门标签" color="#FFCC00" >
+      <a-badge-ribbon style="height: 2rem;width: 5rem; " text="热门标签" color="#FFCC00" >
       <a-card style="margin-bottom: 1.5rem">
         <div class="hot-message">
           <div >
@@ -87,7 +87,7 @@
         </div>
       </a-card>
       </a-badge-ribbon>
-      <a-badge-ribbon style="height: 2rem;width: 5rem; font-size: 4px"  text="性能检测" color="#34C759">
+      <a-badge-ribbon style="height: 2rem;width: 5rem;"  text="性能检测" color="#34C759">
         <a-card>
       <div class="performanceMSG">
         <div style="width: 100%">

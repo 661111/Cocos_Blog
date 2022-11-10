@@ -51,7 +51,6 @@ import { Row,Col,Card } from "ant-design-vue";
 import {onMounted, reactive, toRefs} from "vue";
 import {useStore} from "vuex";
 import {GET} from "@/utils/http/request";
-import {inisHelper} from "@/utils/helper/helper";
 
 export default {
   name: "Links",
