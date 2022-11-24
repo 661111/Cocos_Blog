@@ -4,7 +4,7 @@ window.INIS = {
 
     token: '47f8e3974a88cc31db69aec7904c262e',
 
-    route_hash: true,
+    route_hash: false,
 
     version: '1.0.1'
 
